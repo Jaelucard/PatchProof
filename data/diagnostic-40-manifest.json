@@ -1,0 +1,57 @@
+{
+  "dataset_file": "diagnostic-40.json",
+  "dataset_sha256": "f6edc480420f9cf6f9bc330225e8da0d07df9c0358627a1dc510e3774a368c43",
+  "version_hash": "sha256:3c2e9f0e132b27255a20dd8fb4e8d87c1616bf9dbe275773454947008570d887",
+  "manifest_hash": "sha256:226db5ed8567a1756be565d411ed807a41d09639091d772e9b93ab05172a8045",
+  "manifest": {
+    "development": [
+      "pp40-001",
+      "pp40-002",
+      "pp40-007",
+      "pp40-008",
+      "pp40-011",
+      "pp40-012",
+      "pp40-013",
+      "pp40-014",
+      "pp40-015",
+      "pp40-016",
+      "pp40-021",
+      "pp40-022",
+      "pp40-023",
+      "pp40-024",
+      "pp40-029",
+      "pp40-030",
+      "pp40-033",
+      "pp40-034",
+      "pp40-037",
+      "pp40-038"
+    ],
+    "regression": [
+      "pp40-005",
+      "pp40-006",
+      "pp40-009",
+      "pp40-010",
+      "pp40-019",
+      "pp40-020",
+      "pp40-025",
+      "pp40-026",
+      "pp40-027",
+      "pp40-028"
+    ],
+    "final": [
+      "pp40-003",
+      "pp40-004",
+      "pp40-017",
+      "pp40-018",
+      "pp40-031",
+      "pp40-032",
+      "pp40-035",
+      "pp40-036",
+      "pp40-039",
+      "pp40-040"
+    ]
+  },
+  "review_workflow_complete": true,
+  "human_review_pending": true,
+  "experiment_started": false
+}

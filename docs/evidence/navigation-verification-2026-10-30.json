@@ -1,0 +1,37 @@
+{
+  "checked_date": "2026-10-30",
+  "backend_tests_passed": 374,
+  "frontend_tests_passed": 60,
+  "docker_http_checks_passed": 127,
+  "additional_navigation_integration_checks": 46,
+  "required_checks": [
+    "Ruff backend/tests/deployment",
+    "shell syntax",
+    "TypeScript",
+    "frontend lint",
+    "production build"
+  ],
+  "security_review": "No actionable findings in scoped navigation delta",
+  "chrome_browser_checks": {
+    "native_login_challenge_and_sign_in": "passed",
+    "landing_workspace_and_saved_result": "passed",
+    "json_export_equals_original": true,
+    "report_download": "passed",
+    "fixture_completed_observations": 150,
+    "fixture_provider_reservations": 0,
+    "history_after_reload": "passed",
+    "cross_site_landing_with_cached_login": "passed",
+    "cross_site_api_and_post_with_cached_login": "blocked"
+  },
+  "canonical_accounted_requests": 84,
+  "estimated_cumulative_cost_usd": "0.00317376",
+  "model_calls_added_during_preview_testing": 0,
+  "original_experiment_verdict": "rejected",
+  "final_assessment": "not_run",
+  "followup": "unchanged baseline; no new predictions",
+  "source": "https://nebiusglobalaihackathon.devpost.com/rules",
+  "submission_deadline_china": "2026-10-31T01:00:00+08:00",
+  "judge_access_required_through_china": "2026-12-24T04:00:00+08:00",
+  "public_hosting_or_submission_completed": false,
+  "dependency_install_limit": "Existing installed environments and cached images; not an empty-cache install"
+}

@@ -1,0 +1,20 @@
+{
+  "client_date": "2026-10-29",
+  "timezone": "Asia/Shanghai",
+  "backend_tests_passed": 308,
+  "frontend_tests_passed": 60,
+  "probe_helper_mock_tests_passed": 14,
+  "development_helper_mock_tests_passed": 7,
+  "ruff": "passed",
+  "typescript": "passed",
+  "frontend_lint": "passed",
+  "production_build": "passed",
+  "actual_nebius_inference_requests": 84,
+  "unknown_usage": 0,
+  "estimated_cumulative_usage_usd": "0.00317376",
+  "original_experiment_verdict": "rejected",
+  "final_assessment": "not_run",
+  "followup": "baseline_unchanged; predictions skipped externally",
+  "shared_engine_duplicate_guard": "not_implemented",
+  "code_review": "no actionable findings in targeted instruction patch"
+}

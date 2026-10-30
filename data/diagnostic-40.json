@@ -1,0 +1,485 @@
+{
+  "name": "PatchProof fresh 40 — 2 human approvals, 38 agent approvals",
+  "cases": [
+    {
+      "id": "pp40-001",
+      "text": "The carrier hasn't updated order 008264 since Tuesday, and the promised delivery date has passed. Tracking reference TRK-99142 is all I can see. Please tell me when my order will arrive.",
+      "expected": {
+        "order_id": "008264",
+        "issue_type": "delivery_problem",
+        "requested_action": "status_update",
+        "needs_review": false
+      },
+      "scenario_family": "stalled-shipment-status",
+      "annotation_note": "An overdue shipment and request for arrival information. Use the explicitly named order ID, preserve its leading zeros, and ignore the tracking reference."
+    },
+    {
+      "id": "pp40-002",
+      "text": "Your dispatch email lists order ZP-4831 and parcel code BOX-77490. The parcel has been at the depot for nine days instead of the advertised two. Can you check its delivery progress?",
+      "expected": {
+        "order_id": "ZP-4831",
+        "issue_type": "delivery_problem",
+        "requested_action": "status_update",
+        "needs_review": false
+      },
+      "scenario_family": "stalled-shipment-status",
+      "annotation_note": "Delivery is delayed and the customer asks for progress. The parcel code is not the order ID."
+    },
+    {
+      "id": "pp40-003",
+      "text": "I unpacked the desk lamp from order LM-6208 and found the glass shade shattered. Please return the amount I paid to my card.",
+      "expected": {
+        "order_id": "LM-6208",
+        "issue_type": "damaged_item",
+        "requested_action": "refund",
+        "needs_review": false
+      },
+      "scenario_family": "arrival-damage-money-back",
+      "annotation_note": "Physical damage is explicit. Returning the payment to the card is a refund request."
+    },
+    {
+      "id": "pp40-004",
+      "text": "Order 0003917 was the framed map. Its frame arrived split down one side. I'd like my payment reimbursed.",
+      "expected": {
+        "order_id": "0003917",
+        "issue_type": "damaged_item",
+        "requested_action": "refund",
+        "needs_review": false
+      },
+      "scenario_family": "arrival-damage-money-back",
+      "annotation_note": "A broken frame is damage; reimbursement is a refund. Preserve all leading zeros."
+    },
+    {
+      "id": "pp40-005",
+      "text": "The packing slip for order PN-1456 says a label printer, but the box contains a kitchen scale. Please send the label printer I purchased in place of this scale.",
+      "expected": {
+        "order_id": "PN-1456",
+        "issue_type": "wrong_item",
+        "requested_action": "replacement",
+        "needs_review": false
+      },
+      "scenario_family": "substituted-product-correct-item",
+      "annotation_note": "The product differs from the one ordered. Sending the purchased item in its place is replacement."
+    },
+    {
+      "id": "pp40-006",
+      "text": "For order GX-9024 I selected a left-handed gardening glove set. You sent a right-handed set. Exchange these for the left-handed set, please.",
+      "expected": {
+        "order_id": "GX-9024",
+        "issue_type": "wrong_item",
+        "requested_action": "replacement",
+        "needs_review": false
+      },
+      "scenario_family": "substituted-product-correct-item",
+      "annotation_note": "An incorrect product variant was supplied. An exchange for the correct variant maps to replacement."
+    },
+    {
+      "id": "pp40-007",
+      "text": "The receipt for order BV-7330 includes an installation fee, although I chose delivery only. Please explain why that fee was added.",
+      "expected": {
+        "order_id": "BV-7330",
+        "issue_type": "billing_problem",
+        "requested_action": "other",
+        "needs_review": false
+      },
+      "scenario_family": "unexpected-fee-explanation",
+      "annotation_note": "The disputed fee is a billing issue. An explanation is a clear action outside the named action enum; it is not a refund or progress request."
+    },
+    {
+      "id": "pp40-008",
+      "text": "Order EE-4182 was advertised with free shipping, yet my invoice shows a delivery charge. Could you give me a breakdown of how you calculated the total?",
+      "expected": {
+        "order_id": "EE-4182",
+        "issue_type": "billing_problem",
+        "requested_action": "other",
+        "needs_review": false
+      },
+      "scenario_family": "unexpected-fee-explanation",
+      "annotation_note": "The current request is to explain the charged total, not to report shipment status or return money."
+    },
+    {
+      "id": "pp40-009",
+      "text": "Order QF-2058 was due last Friday and still hasn't left your warehouse. Cancel the order; I no longer need the equipment.",
+      "expected": {
+        "order_id": "QF-2058",
+        "issue_type": "delivery_problem",
+        "requested_action": "cancel_order",
+        "needs_review": false
+      },
+      "scenario_family": "fulfilment-delay-cancellation",
+      "annotation_note": "Overdue fulfilment is explicit. Extract cancellation without adding an inferred refund."
+    },
+    {
+      "id": "pp40-010",
+      "text": "The delivery appointment for order HT-8763 has been postponed three times. Please stop this order before dispatch and cancel it.",
+      "expected": {
+        "order_id": "HT-8763",
+        "issue_type": "delivery_problem",
+        "requested_action": "cancel_order",
+        "needs_review": false
+      },
+      "scenario_family": "fulfilment-delay-cancellation",
+      "annotation_note": "Repeated delivery delays motivate an explicit cancellation request."
+    },
+    {
+      "id": "pp40-011",
+      "text": "The hinge on the case in order CR-5602 arrived snapped. Do not send another case. I want the purchase price refunded.",
+      "expected": {
+        "order_id": "CR-5602",
+        "issue_type": "damaged_item",
+        "requested_action": "refund",
+        "needs_review": false
+      },
+      "scenario_family": "negated-alternative-remedy",
+      "annotation_note": "Replacement is expressly negated. The current, affirmative request is a refund for damage."
+    },
+    {
+      "id": "pp40-012",
+      "text": "Order WD-3096 contains a dented water bottle. I am not asking for money back; send an undamaged bottle instead.",
+      "expected": {
+        "order_id": "WD-3096",
+        "issue_type": "damaged_item",
+        "requested_action": "replacement",
+        "needs_review": false
+      },
+      "scenario_family": "negated-alternative-remedy",
+      "annotation_note": "The refund phrase is negated. The affirmative request is replacement of a damaged product."
+    },
+    {
+      "id": "pp40-013",
+      "text": "About the unexplained service charge on order SC-7418: my earlier message said 'refund it immediately'. That message is withdrawn. I now only want a written explanation of the charge.",
+      "expected": {
+        "order_id": "SC-7418",
+        "issue_type": "billing_problem",
+        "requested_action": "other",
+        "needs_review": false
+      },
+      "scenario_family": "explicitly-superseded-remedy",
+      "annotation_note": "The quoted refund request has been explicitly withdrawn. The current action is an explanation."
+    },
+    {
+      "id": "pp40-014",
+      "text": "In yesterday's message about the duplicate debit on order DU-6814, I wrote 'explain the debit'. Disregard that request. Please refund the extra debit now.",
+      "expected": {
+        "order_id": "DU-6814",
+        "issue_type": "billing_problem",
+        "requested_action": "refund",
+        "needs_review": false
+      },
+      "scenario_family": "explicitly-superseded-remedy",
+      "annotation_note": "The old explanation request is withdrawn. The current request is to refund a duplicate payment."
+    },
+    {
+      "id": "pp40-015",
+      "text": "Order KC-5129 was supposed to contain a USB-C dock, but you sent a USB-A hub. Please refund it. Actually, I still need the dock: replace the hub with the ordered dock instead of refunding me.",
+      "expected": {
+        "order_id": "KC-5129",
+        "issue_type": "wrong_item",
+        "requested_action": "replacement",
+        "needs_review": false
+      },
+      "scenario_family": "explicitly-superseded-remedy",
+      "annotation_note": "The customer explicitly supersedes the refund request with replacement. This is a resolved change of mind, not an unresolved conflict."
+    },
+    {
+      "id": "pp40-016",
+      "text": "You sent lined notebooks instead of the blank ones in order NB-2460. Exchange them, please. On second thought, forget the exchange and send my money back.",
+      "expected": {
+        "order_id": "NB-2460",
+        "issue_type": "wrong_item",
+        "requested_action": "refund",
+        "needs_review": false
+      },
+      "scenario_family": "explicitly-superseded-remedy",
+      "annotation_note": "The last instruction explicitly replaces the exchange request with a refund."
+    },
+    {
+      "id": "pp40-017",
+      "text": "My delivery is a week overdue. The only reference I have is tracking code PKG-882310; I cannot find the order number. Please check where the parcel is.",
+      "expected": {
+        "order_id": null,
+        "issue_type": "delivery_problem",
+        "requested_action": "status_update",
+        "needs_review": true
+      },
+      "scenario_family": "tracking-without-order-identity",
+      "annotation_note": "The tracking code cannot stand in for the missing order ID. Preserve the clear delivery issue and status request; clarification of the target order is needed."
+    },
+    {
+      "id": "pp40-018",
+      "text": "The courier says my parcel was lost. Label reference SHIP-493802 is a shipping reference, not my order number, which I don't have. Please send the lost items again.",
+      "expected": {
+        "order_id": null,
+        "issue_type": "delivery_problem",
+        "requested_action": "replacement",
+        "needs_review": true
+      },
+      "scenario_family": "tracking-without-order-identity",
+      "annotation_note": "No order ID is available. Resending the lost goods is replacement, while loss in transit is a delivery issue."
+    },
+    {
+      "id": "pp40-019",
+      "text": "Before I place an order, could you tell me whether the folding stand supports a 16-inch laptop?",
+      "expected": {
+        "order_id": null,
+        "issue_type": "other",
+        "requested_action": "other",
+        "needs_review": false
+      },
+      "scenario_family": "general-prepurchase-enquiry",
+      "annotation_note": "A clear general compatibility question needs no order identifier. It is outside the named issue and action categories."
+    },
+    {
+      "id": "pp40-020",
+      "text": "I haven't bought anything yet. Please explain which adapter I would need to use your travel kettle in Japan.",
+      "expected": {
+        "order_id": null,
+        "issue_type": "other",
+        "requested_action": "other",
+        "needs_review": false
+      },
+      "scenario_family": "general-prepurchase-enquiry",
+      "annotation_note": "A general product-information request is clear without an order. Missing order ID alone does not make every ticket ambiguous."
+    },
+    {
+      "id": "pp40-021",
+      "text": "The zipper on the bag in order BG-9357 is torn.",
+      "expected": {
+        "order_id": "BG-9357",
+        "issue_type": "damaged_item",
+        "requested_action": null,
+        "needs_review": true
+      },
+      "scenario_family": "problem-without-requested-remedy",
+      "annotation_note": "The problem is clear but no response or remedy is specified. Unlike an explicit no-action request, merely reporting a problem does not resolve the missing action."
+    },
+    {
+      "id": "pp40-022",
+      "text": "Order CU-4271 arrived today. I ordered a set of measuring cups and found measuring spoons in the parcel.",
+      "expected": {
+        "order_id": "CU-4271",
+        "issue_type": "wrong_item",
+        "requested_action": null,
+        "needs_review": true
+      },
+      "scenario_family": "problem-without-requested-remedy",
+      "annotation_note": "A wrong item is reported, but the customer does not say whether they want replacement, refund or another response."
+    },
+    {
+      "id": "pp40-023",
+      "text": "Order LP-8106 arrived four days late, but I have it now. This note is only for your records. I do not want any action or reply.",
+      "expected": {
+        "order_id": "LP-8106",
+        "issue_type": "delivery_problem",
+        "requested_action": null,
+        "needs_review": false
+      },
+      "scenario_family": "explicit-record-only-report",
+      "annotation_note": "The delivery issue is clear and the customer explicitly requests no action. Null action is intentional, so no clarification is needed."
+    },
+    {
+      "id": "pp40-024",
+      "text": "There was an incorrect tax charge on order TX-6642. Your team has already corrected it. I'm documenting the incident only; please take no further action.",
+      "expected": {
+        "order_id": "TX-6642",
+        "issue_type": "billing_problem",
+        "requested_action": null,
+        "needs_review": false
+      },
+      "scenario_family": "explicit-record-only-report",
+      "annotation_note": "The past billing problem remains the issue type. The current request explicitly rules out further action."
+    },
+    {
+      "id": "pp40-025",
+      "text": "Order VF-3928 still hasn't shipped. Cancel it, but also keep that same order active for delivery. I want both instructions followed.",
+      "expected": {
+        "order_id": "VF-3928",
+        "issue_type": "delivery_problem",
+        "requested_action": null,
+        "needs_review": true
+      },
+      "scenario_family": "unresolved-incompatible-instructions",
+      "annotation_note": "Cancel and keep active are expressly simultaneous instructions. There is no correction establishing precedence, so the action needs clarification."
+    },
+    {
+      "id": "pp40-026",
+      "text": "The mirror in order MR-1825 arrived cracked. Refund the full payment, and do not refund any of that payment. Neither instruction replaces the other.",
+      "expected": {
+        "order_id": "MR-1825",
+        "issue_type": "damaged_item",
+        "requested_action": null,
+        "needs_review": true
+      },
+      "scenario_family": "unresolved-incompatible-instructions",
+      "annotation_note": "The refund instruction directly conflicts with the prohibition. The text explicitly leaves the conflict unresolved."
+    },
+    {
+      "id": "pp40-027",
+      "text": "Both order AA-5813 and order AA-5819 contain the wrong size of filter. Replace the filters in both orders with the sizes I originally selected.",
+      "expected": {
+        "order_id": null,
+        "issue_type": "wrong_item",
+        "requested_action": "replacement",
+        "needs_review": true
+      },
+      "scenario_family": "multiple-target-orders-shared-remedy",
+      "annotation_note": "Both orders are active targets, which the single order_id field cannot represent. The issue and shared requested remedy remain clear."
+    },
+    {
+      "id": "pp40-028",
+      "text": "An extra handling fee was charged on each of orders FF-2704 and FF-2705. Please refund the extra fee on each order.",
+      "expected": {
+        "order_id": null,
+        "issue_type": "billing_problem",
+        "requested_action": "refund",
+        "needs_review": true
+      },
+      "scenario_family": "multiple-target-orders-shared-remedy",
+      "annotation_note": "Two targeted orders cannot be encoded as one order ID. Both share a clear billing issue and refund request."
+    },
+    {
+      "id": "pp40-029",
+      "text": "My previous order OLD-1168 arrived without trouble and is not part of this request. The current order NEW-5470 is now two weeks overdue. Cancel NEW-5470, please.",
+      "expected": {
+        "order_id": "NEW-5470",
+        "issue_type": "delivery_problem",
+        "requested_action": "cancel_order",
+        "needs_review": false
+      },
+      "scenario_family": "irrelevant-past-order-reference",
+      "annotation_note": "Only the current order is targeted. Mentioning an explicitly irrelevant past order does not require a null ID."
+    },
+    {
+      "id": "pp40-030",
+      "text": "Order HIST-3372 from last year was fine; no help is needed with it. This message concerns order NOW-6281: its ceramic tray is chipped. Refund the payment for NOW-6281.",
+      "expected": {
+        "order_id": "NOW-6281",
+        "issue_type": "damaged_item",
+        "requested_action": "refund",
+        "needs_review": false
+      },
+      "scenario_family": "irrelevant-past-order-reference",
+      "annotation_note": "The customer distinguishes the irrelevant historical order from the sole current target."
+    },
+    {
+      "id": "pp40-031",
+      "text": "I was charged an extra service fee on one purchase. It could be order SB-3601 or SB-3607; I cannot tell which statement entry belongs to which order. Please refund that extra fee.",
+      "expected": {
+        "order_id": null,
+        "issue_type": "billing_problem",
+        "requested_action": "refund",
+        "needs_review": true
+      },
+      "scenario_family": "uncertain-choice-of-target-order",
+      "annotation_note": "The customer targets one order but cannot identify which. Preserve the clear billing problem and refund request without guessing an ID."
+    },
+    {
+      "id": "pp40-032",
+      "text": "One of the two boxes contained a broken timer. I mixed up the labels for orders TM-9046 and TM-9054, so I don't know which order the timer came from. Please replace the broken timer.",
+      "expected": {
+        "order_id": null,
+        "issue_type": "damaged_item",
+        "requested_action": "replacement",
+        "needs_review": true
+      },
+      "scenario_family": "uncertain-choice-of-target-order",
+      "annotation_note": "A single affected order exists but its identity is uncertain. Damage and replacement are explicit."
+    },
+    {
+      "id": "pp40-033",
+      "text": "For order EM-7531, please change the engraving text from 'Mira' to 'Nora' before you make the pendant.",
+      "expected": {
+        "order_id": "EM-7531",
+        "issue_type": "other",
+        "requested_action": "other",
+        "needs_review": false
+      },
+      "scenario_family": "clear-order-edit-outside-enum",
+      "annotation_note": "This is a clear customization change, not damage, wrong item, billing or delivery trouble. The action is outside the named action enum."
+    },
+    {
+      "id": "pp40-034",
+      "text": "Please update the contact email for order CE-4880 to the new address I supplied in my account. No shipment or product problem is being reported.",
+      "expected": {
+        "order_id": "CE-4880",
+        "issue_type": "other",
+        "requested_action": "other",
+        "needs_review": false
+      },
+      "scenario_family": "clear-order-edit-outside-enum",
+      "annotation_note": "The intent is a clear contact-detail change. This extractor classifies the request; it does not require all details needed to execute the change."
+    },
+    {
+      "id": "pp40-035",
+      "text": "The bracket in order BR-6903 won't fit. I can't tell whether it is bent or you sent a different model. Please replace it with the correct working bracket.",
+      "expected": {
+        "order_id": "BR-6903",
+        "issue_type": null,
+        "requested_action": "replacement",
+        "needs_review": true
+      },
+      "scenario_family": "uncertain-damage-versus-wrong-item",
+      "annotation_note": "The customer cannot distinguish damage from an incorrect item. Preserve the clear replacement request but leave the issue uncertain."
+    },
+    {
+      "id": "pp40-036",
+      "text": "Something is wrong with the lens adapter from order LA-1572. It may be cracked, or it may be the wrong version; I cannot work out which. I want my payment returned.",
+      "expected": {
+        "order_id": "LA-1572",
+        "issue_type": null,
+        "requested_action": "refund",
+        "needs_review": true
+      },
+      "scenario_family": "uncertain-damage-versus-wrong-item",
+      "annotation_note": "Two possible issue categories remain unresolved. The money-back request is nonetheless explicit."
+    },
+    {
+      "id": "pp40-037",
+      "text": "The lunch box in order LB-8405 arrived with a cracked lid. I want to return it, but I haven't decided between getting my money back and receiving a new one.",
+      "expected": {
+        "order_id": "LB-8405",
+        "issue_type": "damaged_item",
+        "requested_action": null,
+        "needs_review": true
+      },
+      "scenario_family": "return-with-undecided-remedy",
+      "annotation_note": "Returning the item does not resolve the explicitly undecided refund-versus-replacement choice. Do not infer a refund from the word return."
+    },
+    {
+      "id": "pp40-038",
+      "text": "Order ST-2267 contained a narrow stapler instead of the wide one I bought. I will send it back. I'm still choosing whether I want the correct stapler or a refund, so I cannot specify that yet.",
+      "expected": {
+        "order_id": "ST-2267",
+        "issue_type": "wrong_item",
+        "requested_action": null,
+        "needs_review": true
+      },
+      "scenario_family": "return-with-undecided-remedy",
+      "annotation_note": "The issue is known but the customer explicitly withholds the remedy decision. The intended return does not establish refund or replacement."
+    },
+    {
+      "id": "pp40-039",
+      "text": "The base of the vase in order VS-9784 was chipped when it arrived. I know your refund window has passed, but I am asking you to refund it anyway.",
+      "expected": {
+        "order_id": "VS-9784",
+        "issue_type": "damaged_item",
+        "requested_action": "refund",
+        "needs_review": false
+      },
+      "scenario_family": "requested-remedy-despite-policy-limit",
+      "annotation_note": "Extract the explicit refund request without deciding whether policy permits it. A possible eligibility problem does not make this intent ambiguous."
+    },
+    {
+      "id": "pp40-040",
+      "text": "You supplied the wrong cable length in order CB-3148. I realise your exchange policy requires the original packaging, which I discarded. Even so, please replace it with the length I ordered.",
+      "expected": {
+        "order_id": "CB-3148",
+        "issue_type": "wrong_item",
+        "requested_action": "replacement",
+        "needs_review": false
+      },
+      "scenario_family": "requested-remedy-despite-policy-limit",
+      "annotation_note": "The requested replacement is explicit despite a possible policy obstacle. The task extracts intent and does not approve the exchange."
+    }
+  ]
+}

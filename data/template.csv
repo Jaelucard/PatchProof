@@ -1,0 +1,2 @@
+id,text,order_id,issue_type,requested_action,needs_review
+ticket-001,"Please refund order 004812. It arrived late.",004812,delivery_problem,refund,false

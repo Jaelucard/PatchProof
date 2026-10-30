@@ -1,0 +1,3 @@
+# Synthetic 40-ticket diagnostic
+
+Fixed split: 20 development, 10 regression, 10 final. Two cases have individual human approval; 38 have delegated agent approval. Import with reviewed unchecked. Human review remains pending; no positive adoption verdict is established. The baseline file preserves the exact frozen prompt without an added newline. The original dataset file SHA-256 is f6edc480420f9cf6f9bc330225e8da0d07df9c0358627a1dc510e3774a368c43. No real provider results are included. Once these cases are public, they are published diagnostic examples, not a concealed generalization benchmark.

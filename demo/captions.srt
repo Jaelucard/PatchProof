@@ -1,0 +1,29 @@
+1
+00:00:00,000 --> 00:00:08,000
+PatchProof | Saved real NVIDIA-on-Nebius evidence
+This clip reviews an existing run; it does not time inference.
+
+2
+00:00:08,000 --> 00:00:19,000
+Requested action: expected other; candidate status_update.
+A previously correct field was lost.
+
+3
+00:00:19,000 --> 00:00:30,000
+The baseline preserved the action.
+The ticket already failed another field; the new regression still counts.
+
+4
+00:00:30,000 --> 00:00:39,000
+82 requests, 80 observations. Rejected.
+Final assessment was not run because regression assessment failed.
+
+5
+00:00:39,000 --> 00:00:45,000
+Both proposals were identical formatting changes.
+No successful repair strategy or production accuracy claim.
+
+6
+00:00:45,000 --> 00:00:52,109
+Mixed label review: 2 individual human approvals, 38 agent approvals.
+Saved JSON and Markdown preserve the evidence.

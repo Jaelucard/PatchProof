@@ -1,0 +1,47 @@
+{
+  "status": "completed",
+  "reason": "all_probe_checks_passed",
+  "at": "2026-10-28T17:36:54.888847+00:00",
+  "probe_id": "diagnostic-probe-001",
+  "response": "{\"order_id\": \"PROBE-8462\", \"issue_type\": \"damaged_item\", \"requested_action\": \"refund\", \"needs_review\": false}",
+  "evaluation": {
+    "raw": "{\"order_id\": \"PROBE-8462\", \"issue_type\": \"damaged_item\", \"requested_action\": \"refund\", \"needs_review\": false}",
+    "parsed": {
+      "order_id": "PROBE-8462",
+      "issue_type": "damaged_item",
+      "requested_action": "refund",
+      "needs_review": false
+    },
+    "checks": {
+      "json": true,
+      "schema": true,
+      "order_id": true,
+      "issue_type": true,
+      "requested_action": true,
+      "needs_review": true
+    },
+    "reasons": {},
+    "passed": true
+  },
+  "catalog": {
+    "model": "nvidia/Nemotron-3_5-Lightning",
+    "catalog_access_confirmed": true,
+    "inference_access_confirmed": false,
+    "checked_at": "2026-10-28T17:36:53.035628+00:00"
+  },
+  "session_usage": {
+    "live_calls": 1,
+    "reservations": 1,
+    "completed_calls": 1,
+    "accounted_calls": 1,
+    "unknown_usage_calls": 0,
+    "tokens": 183,
+    "cost": "0.00001818",
+    "charged_or_reserved_usd": "0.00001818",
+    "cost_basis": "Estimated from verified prices and reported tokens; unknown requests retain reservations. Not an invoice."
+  },
+  "cumulative_ledger": {
+    "live_calls": 1,
+    "charged_or_reserved_usd": "0.00001818"
+  }
+}

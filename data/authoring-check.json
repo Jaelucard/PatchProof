@@ -1,0 +1,82 @@
+{
+  "kind": "authoring self-check, not independent agent or human review",
+  "execution_kind": "Fixture simulation",
+  "expected_schemas_valid": 60,
+  "unique_ids": 60,
+  "unique_normalized_inputs": 60,
+  "scenario_family_partition_collisions": [],
+  "partitions": {
+    "development": {
+      "baseline": {
+        "passing_cases": 17,
+        "passing_checks": 155,
+        "total_cases": 30,
+        "total_checks": 180
+      },
+      "candidate_1": {
+        "passing_cases": 29,
+        "passing_checks": 179,
+        "total_cases": 30,
+        "total_checks": 180,
+        "lost_checks_vs_baseline": 1,
+        "gained_checks_vs_baseline": 25
+      },
+      "candidate_2": {
+        "passing_cases": 29,
+        "passing_checks": 179,
+        "total_cases": 30,
+        "total_checks": 180,
+        "lost_checks_vs_baseline": 0,
+        "gained_checks_vs_baseline": 24
+      }
+    },
+    "regression": {
+      "baseline": {
+        "passing_cases": 12,
+        "passing_checks": 87,
+        "total_cases": 15,
+        "total_checks": 90
+      },
+      "candidate_1": {
+        "passing_cases": 15,
+        "passing_checks": 90,
+        "total_cases": 15,
+        "total_checks": 90,
+        "lost_checks_vs_baseline": 0,
+        "gained_checks_vs_baseline": 3
+      },
+      "candidate_2": {
+        "passing_cases": 15,
+        "passing_checks": 90,
+        "total_cases": 15,
+        "total_checks": 90,
+        "lost_checks_vs_baseline": 0,
+        "gained_checks_vs_baseline": 3
+      }
+    },
+    "final": {
+      "baseline": {
+        "passing_cases": 6,
+        "passing_checks": 72,
+        "total_cases": 15,
+        "total_checks": 90
+      },
+      "candidate_1": {
+        "passing_cases": 15,
+        "passing_checks": 90,
+        "total_cases": 15,
+        "total_checks": 90,
+        "lost_checks_vs_baseline": 0,
+        "gained_checks_vs_baseline": 18
+      },
+      "candidate_2": {
+        "passing_cases": 14,
+        "passing_checks": 89,
+        "total_cases": 15,
+        "total_checks": 90,
+        "lost_checks_vs_baseline": 0,
+        "gained_checks_vs_baseline": 17
+      }
+    }
+  }
+}

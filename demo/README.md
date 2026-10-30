@@ -1,0 +1,3 @@
+# Local live-evidence recording draft
+
+This is a real browser-tab screencast of clicks through the saved rejected Nebius experiment ba2420e6-2691-47a2-b993-18c35e1c1955. No new inference was started for recording. The screencast is about 52 seconds, with synthesized English narration and an optional English subtitle track plus captions.srt. It is a local draft, not a published YouTube video. It reviews the original rejected run; the later instruction-only development follow-up is reported separately in ../docs/LIVE-RESULTS.md. The video duration is not the 141.469187-second experiment duration. Public repository/build links and final video review remain required before submission.

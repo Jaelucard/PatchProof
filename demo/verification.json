@@ -1,0 +1,24 @@
+{
+  "duration_seconds": 52.109,
+  "bytes": 1419664,
+  "video_codec": "h264",
+  "resolution": [
+    1366,
+    900
+  ],
+  "audio_codec": "aac",
+  "subtitles": "mov_text English track plus captions.srt",
+  "decode_check": "passed",
+  "capture": "actual browser-tab screencast of saved original live result",
+  "narration": "synthesized English Samantha voice",
+  "new_provider_calls_for_recording": 0,
+  "published": false,
+  "final_editorial_review": "pending",
+  "agent_content_review_2026_10_30": "No blocking factual/privacy issue in narration, captions and six representative frames",
+  "review_limits": [
+    "audio listening and pronunciation unverified",
+    "six-frame rather than frame-by-frame visual review",
+    "YouTube subtitle rendering unverified"
+  ],
+  "entrant_editorial_approval": "pending"
+}

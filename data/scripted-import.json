@@ -1,0 +1,1025 @@
+{
+  "name": "Controlled scripted custom import (Fixture simulation)",
+  "cases": [
+    {
+      "id": "custom-dev-01",
+      "text": "Order 00142 was due on Monday and has not arrived. Can you tell me where it is?",
+      "expected": {
+        "order_id": "00142",
+        "issue_type": "delivery_problem",
+        "requested_action": "status_update",
+        "needs_review": false
+      },
+      "scenario_family": "late-garden-delivery",
+      "annotation_note": "Explicit late delivery and tracking request; preserve both leading zeros.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"00142\", \"issue_type\": \"delivery_problem\", \"requested_action\": \"status_update\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"delivery_problem\", \"requested_action\": \"status_update\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"00142\", \"issue_type\": \"delivery_problem\", \"requested_action\": \"status_update\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-dev-02",
+      "text": "The mug in order M-882 arrived with a crack through the handle. Please send an intact replacement.",
+      "expected": {
+        "order_id": "M-882",
+        "issue_type": "damaged_item",
+        "requested_action": "replacement",
+        "needs_review": false
+      },
+      "scenario_family": "cracked-ceramic-arrival",
+      "annotation_note": "Physical damage; replacement is explicit.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"M-882\", \"issue_type\": \"damaged_item\", \"requested_action\": \"replacement\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"damaged_item\", \"requested_action\": \"replacement\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"M-882\", \"issue_type\": \"damaged_item\", \"requested_action\": \"replacement\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-dev-03",
+      "text": "For order 7103, I ordered a blue jacket but received red trousers. I want my money back.",
+      "expected": {
+        "order_id": "7103",
+        "issue_type": "wrong_item",
+        "requested_action": "refund",
+        "needs_review": false
+      },
+      "scenario_family": "wrong-jacket-money-back",
+      "annotation_note": "Wrong product; money back is a refund. First proposal intentionally loses the ID while fixing the action.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"7103\", \"issue_type\": \"wrong_item\", \"requested_action\": \"replacement\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"wrong_item\", \"requested_action\": \"refund\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"7103\", \"issue_type\": \"wrong_item\", \"requested_action\": \"refund\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-dev-04",
+      "text": "You charged my card twice for order 4409. Please refund the second charge.",
+      "expected": {
+        "order_id": "4409",
+        "issue_type": "billing_problem",
+        "requested_action": "refund",
+        "needs_review": false
+      },
+      "scenario_family": "duplicate-bank-charge",
+      "annotation_note": "The duplicate charge is billing; one clearly targeted order.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"4409\", \"issue_type\": \"billing_problem\", \"requested_action\": \"refund\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"billing_problem\", \"requested_action\": \"refund\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"4409\", \"issue_type\": \"billing_problem\", \"requested_action\": \"refund\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-dev-05",
+      "text": "Please add the gift message \"Happy birthday, Sam\" to order G-190. The order itself is fine.",
+      "expected": {
+        "order_id": "G-190",
+        "issue_type": "other",
+        "requested_action": "other",
+        "needs_review": false
+      },
+      "scenario_family": "gift-message-addition",
+      "annotation_note": "Gift-message editing falls outside both enums; no uncertainty.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"G-190\", \"issue_type\": \"other\", \"requested_action\": \"other\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"other\", \"requested_action\": \"other\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"G-190\", \"issue_type\": \"other\", \"requested_action\": \"other\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-dev-06",
+      "text": "Order 72 is a week overdue. Do not cancel it. I only need a delivery status update.",
+      "expected": {
+        "order_id": "72",
+        "issue_type": "delivery_problem",
+        "requested_action": "status_update",
+        "needs_review": false
+      },
+      "scenario_family": "negated-cancellation-parcel",
+      "annotation_note": "Explicit negation excludes cancel_order.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"72\", \"issue_type\": \"delivery_problem\", \"requested_action\": \"status_update\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"delivery_problem\", \"requested_action\": \"status_update\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"72\", \"issue_type\": \"delivery_problem\", \"requested_action\": \"status_update\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-dev-07",
+      "text": "My earlier message said \"refund order V-817\" because the vase was shattered. That is old: please replace the vase now instead.",
+      "expected": {
+        "order_id": "V-817",
+        "issue_type": "damaged_item",
+        "requested_action": "replacement",
+        "needs_review": false
+      },
+      "scenario_family": "quoted-refund-broken-vase",
+      "annotation_note": "Current replacement supersedes the quoted refund.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"V-817\", \"issue_type\": \"damaged_item\", \"requested_action\": \"refund\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"damaged_item\", \"requested_action\": \"replacement\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"V-817\", \"issue_type\": \"damaged_item\", \"requested_action\": \"replacement\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-dev-08",
+      "text": "Cancel order 338 because the book is late. Actually, I have changed my mind: keep it coming and just tell me the delivery status.",
+      "expected": {
+        "order_id": "338",
+        "issue_type": "delivery_problem",
+        "requested_action": "status_update",
+        "needs_review": false
+      },
+      "scenario_family": "changed-mind-late-book",
+      "annotation_note": "Explicit change of mind resolves the initial cancellation.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"338\", \"issue_type\": \"delivery_problem\", \"requested_action\": \"cancel_order\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"delivery_problem\", \"requested_action\": \"status_update\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"338\", \"issue_type\": \"delivery_problem\", \"requested_action\": \"status_update\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-dev-09",
+      "text": "The tablet I ordered arrived with a shattered screen. I cannot find my order number; please refund it. ",
+      "expected": {
+        "order_id": null,
+        "issue_type": "damaged_item",
+        "requested_action": "refund",
+        "needs_review": true
+      },
+      "scenario_family": "unidentified-cracked-screen",
+      "annotation_note": "Order target needs an identifier; damage and requested refund stay clear. Trailing space is preserved.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"UNKNOWN\", \"issue_type\": \"damaged_item\", \"requested_action\": \"refund\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": \"UNSUPPORTED-ID\", \"issue_type\": \"damaged_item\", \"requested_action\": \"refund\", \"needs_review\": true}",
+        "candidate_2": "{\"order_id\": null, \"issue_type\": \"damaged_item\", \"requested_action\": \"refund\", \"needs_review\": true}"
+      }
+    },
+    {
+      "id": "custom-dev-10",
+      "text": "Order 4812 has not arrived. I want to cancel it, but please keep the order active.",
+      "expected": {
+        "order_id": "4812",
+        "issue_type": "delivery_problem",
+        "requested_action": null,
+        "needs_review": true
+      },
+      "scenario_family": "contradictory-active-order",
+      "annotation_note": "Unresolved cancellation/keep-active contradiction affects action only.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"4812\", \"issue_type\": \"delivery_problem\", \"requested_action\": \"cancel_order\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"delivery_problem\", \"requested_action\": null, \"needs_review\": true}",
+        "candidate_2": "{\"order_id\": \"4812\", \"issue_type\": \"delivery_problem\", \"requested_action\": null, \"needs_review\": true}"
+      }
+    },
+    {
+      "id": "custom-dev-11",
+      "text": "Order 619 contains a laptop charger, but I bought a phone charger.",
+      "expected": {
+        "order_id": "619",
+        "issue_type": "wrong_item",
+        "requested_action": null,
+        "needs_review": true
+      },
+      "scenario_family": "wrong-charger-no-remedy",
+      "annotation_note": "Wrong product is clear; desired response needs clarification.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"619\", \"issue_type\": \"wrong_item\", \"requested_action\": null, \"needs_review\": true}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"wrong_item\", \"requested_action\": null, \"needs_review\": true}",
+        "candidate_2": "{\"order_id\": \"619\", \"issue_type\": \"wrong_item\", \"requested_action\": null, \"needs_review\": true}"
+      }
+    },
+    {
+      "id": "custom-dev-12",
+      "text": "Orders 810 and 811 are both two weeks late. Refund both orders, please.",
+      "expected": {
+        "order_id": null,
+        "issue_type": "delivery_problem",
+        "requested_action": "refund",
+        "needs_review": true
+      },
+      "scenario_family": "two-late-refund-targets",
+      "annotation_note": "Two independent targets exceed the one-order schema; shared issue/action remain.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"810\", \"issue_type\": \"delivery_problem\", \"requested_action\": \"refund\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": \"UNSUPPORTED-ID\", \"issue_type\": \"delivery_problem\", \"requested_action\": \"refund\", \"needs_review\": true}",
+        "candidate_2": "{\"order_id\": null, \"issue_type\": \"delivery_problem\", \"requested_action\": \"refund\", \"needs_review\": true}"
+      }
+    },
+    {
+      "id": "custom-dev-13",
+      "text": "The parcel for order 906 has gone missing. Please cancel the order and also send a replacement for it.",
+      "expected": {
+        "order_id": "906",
+        "issue_type": "delivery_problem",
+        "requested_action": null,
+        "needs_review": true
+      },
+      "scenario_family": "cancel-and-replace-missing",
+      "annotation_note": "Two incompatible current actions cannot fit one action field.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"906\", \"issue_type\": \"delivery_problem\", \"requested_action\": \"cancel_order\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"delivery_problem\", \"requested_action\": null, \"needs_review\": true}",
+        "candidate_2": "{\"order_id\": \"906\", \"issue_type\": \"delivery_problem\", \"requested_action\": null, \"needs_review\": true}"
+      }
+    },
+    {
+      "id": "custom-dev-14",
+      "text": "Before I place any order, can you tell me whether your picnic blanket contains wool?",
+      "expected": {
+        "order_id": null,
+        "issue_type": "other",
+        "requested_action": "other",
+        "needs_review": false
+      },
+      "scenario_family": "general-material-enquiry",
+      "annotation_note": "General product enquiry needs no order ID or review.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": null, \"issue_type\": \"other\", \"requested_action\": \"other\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": \"UNSUPPORTED-ID\", \"issue_type\": \"other\", \"requested_action\": \"other\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": null, \"issue_type\": \"other\", \"requested_action\": \"other\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-dev-15",
+      "text": "Order W-622 is either damaged or the wrong watch model; I cannot tell which. Please replace it.",
+      "expected": {
+        "order_id": "W-622",
+        "issue_type": null,
+        "requested_action": "replacement",
+        "needs_review": true
+      },
+      "scenario_family": "uncertain-watch-condition",
+      "annotation_note": "Uncertainty affects issue_type; replacement and target remain clear. Second fixture proposal deliberately leaves this issue wrong.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"W-622\", \"issue_type\": \"damaged_item\", \"requested_action\": \"replacement\", \"needs_review\": true}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": null, \"requested_action\": \"replacement\", \"needs_review\": true}",
+        "candidate_2": "{\"order_id\": \"W-622\", \"issue_type\": \"damaged_item\", \"requested_action\": \"replacement\", \"needs_review\": true}"
+      }
+    },
+    {
+      "id": "custom-dev-16",
+      "text": "There is an unexplained extra charge. My receipts show order 2004 and order 2005, and I cannot tell which one was charged. Refund that extra charge.",
+      "expected": {
+        "order_id": null,
+        "issue_type": "billing_problem",
+        "requested_action": "refund",
+        "needs_review": true
+      },
+      "scenario_family": "uncertain-receipt-id",
+      "annotation_note": "Cannot choose the target order from two unresolved possibilities.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"2004\", \"issue_type\": \"billing_problem\", \"requested_action\": \"refund\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": \"UNSUPPORTED-ID\", \"issue_type\": \"billing_problem\", \"requested_action\": \"refund\", \"needs_review\": true}",
+        "candidate_2": "{\"order_id\": null, \"issue_type\": \"billing_problem\", \"requested_action\": \"refund\", \"needs_review\": true}"
+      }
+    },
+    {
+      "id": "custom-dev-17",
+      "text": "Your agent offered a refund for the delay on order 319. I am not asking for that; please tell me when the parcel will arrive.",
+      "expected": {
+        "order_id": "319",
+        "issue_type": "delivery_problem",
+        "requested_action": "status_update",
+        "needs_review": false
+      },
+      "scenario_family": "agent-offer-versus-customer",
+      "annotation_note": "The agent offer is not the customer request.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"319\", \"issue_type\": \"delivery_problem\", \"requested_action\": \"status_update\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"delivery_problem\", \"requested_action\": \"status_update\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"319\", \"issue_type\": \"delivery_problem\", \"requested_action\": \"status_update\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-dev-18",
+      "text": "Order 0008 is overdue; the carrier tracking number is 991234567. Please cancel order 0008.",
+      "expected": {
+        "order_id": "0008",
+        "issue_type": "delivery_problem",
+        "requested_action": "cancel_order",
+        "needs_review": false
+      },
+      "scenario_family": "tracking-number-decoy",
+      "annotation_note": "Use explicit order ID, not the longer tracking number; retain leading zeros.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": 8, \"issue_type\": \"delivery_problem\", \"requested_action\": \"cancel_order\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"delivery_problem\", \"requested_action\": \"cancel_order\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"0008\", \"issue_type\": \"delivery_problem\", \"requested_action\": \"cancel_order\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-dev-19",
+      "text": "I have not purchased anything yet. How many days after delivery can a customer request a return?",
+      "expected": {
+        "order_id": null,
+        "issue_type": "other",
+        "requested_action": "other",
+        "needs_review": false
+      },
+      "scenario_family": "general-return-window",
+      "annotation_note": "Extract a general enquiry; do not decide policy or invent a targeted order.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": null, \"issue_type\": \"other\", \"requested_action\": \"other\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": \"UNSUPPORTED-ID\", \"issue_type\": \"other\", \"requested_action\": \"other\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": null, \"issue_type\": \"other\", \"requested_action\": \"other\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-dev-20",
+      "text": "The invoice total for order B-221 is wrong. Please put me in contact with a person from billing.",
+      "expected": {
+        "order_id": "B-221",
+        "issue_type": "billing_problem",
+        "requested_action": "other",
+        "needs_review": false
+      },
+      "scenario_family": "billing-human-contact",
+      "annotation_note": "Human contact is a clear request outside the action enum.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"B-221\", \"issue_type\": \"billing_problem\", \"requested_action\": \"other\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"billing_problem\", \"requested_action\": \"other\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"B-221\", \"issue_type\": \"billing_problem\", \"requested_action\": \"other\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-dev-21",
+      "text": "Order P-444 arrived with a broken dinner plate. I do not want a refund; send me a replacement plate.",
+      "expected": {
+        "order_id": "P-444",
+        "issue_type": "damaged_item",
+        "requested_action": "replacement",
+        "needs_review": false
+      },
+      "scenario_family": "replacement-not-refund-plate",
+      "annotation_note": "Negated refund does not override the explicit replacement.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"P-444\", \"issue_type\": \"damaged_item\", \"requested_action\": \"replacement\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"damaged_item\", \"requested_action\": \"replacement\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"P-444\", \"issue_type\": \"damaged_item\", \"requested_action\": \"replacement\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-dev-22",
+      "text": "For the record, the box in order 603 contained a dented tin. I have already resolved it elsewhere; no action or reply is requested.",
+      "expected": {
+        "order_id": "603",
+        "issue_type": "damaged_item",
+        "requested_action": null,
+        "needs_review": false
+      },
+      "scenario_family": "damaged-item-record-only",
+      "annotation_note": "An explicit record-only message needs no action clarification.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"603\", \"issue_type\": \"damaged_item\", \"requested_action\": null, \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"damaged_item\", \"requested_action\": null, \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"603\", \"issue_type\": \"damaged_item\", \"requested_action\": null, \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-dev-23",
+      "text": "Order 218 has still not shipped after the promised dispatch date. Cancel it, please.",
+      "expected": {
+        "order_id": "218",
+        "issue_type": "delivery_problem",
+        "requested_action": "cancel_order",
+        "needs_review": false
+      },
+      "scenario_family": "unshipped-deadline-cancel",
+      "annotation_note": "Unfulfilled dispatch commitment is a delivery problem; fixture baseline wraps JSON in a forbidden code fence.",
+      "fixture_outputs": {
+        "baseline": "```json\n{\"order_id\": \"218\", \"issue_type\": \"delivery_problem\", \"requested_action\": \"cancel_order\", \"needs_review\": false}\n```",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"delivery_problem\", \"requested_action\": \"cancel_order\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"218\", \"issue_type\": \"delivery_problem\", \"requested_action\": \"cancel_order\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-dev-24",
+      "text": "Something is wrong with order 200, but I cannot say what the problem is or what I want you to do about it.",
+      "expected": {
+        "order_id": "200",
+        "issue_type": null,
+        "requested_action": null,
+        "needs_review": true
+      },
+      "scenario_family": "unexplained-unsure-request",
+      "annotation_note": "Both issue and action are explicitly unresolved; other would hide uncertainty.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"200\", \"issue_type\": null, \"requested_action\": null, \"needs_review\": true}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": null, \"requested_action\": null, \"needs_review\": true}",
+        "candidate_2": "{\"order_id\": \"200\", \"issue_type\": null, \"requested_action\": null, \"needs_review\": true}"
+      }
+    },
+    {
+      "id": "custom-dev-25",
+      "text": "Order 701 arrived exactly as described. This is just a note of thanks; I do not need any action.",
+      "expected": {
+        "order_id": "701",
+        "issue_type": "other",
+        "requested_action": null,
+        "needs_review": false
+      },
+      "scenario_family": "satisfaction-record",
+      "annotation_note": "Clear non-problem feedback with explicitly absent action.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"701\", \"issue_type\": \"other\", \"requested_action\": null, \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"other\", \"requested_action\": null, \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"701\", \"issue_type\": \"other\", \"requested_action\": null, \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-dev-26",
+      "text": "I received a US power adapter instead of the EU adapter ordered in order 610. Please refund the purchase.",
+      "expected": {
+        "order_id": "610",
+        "issue_type": "wrong_item",
+        "requested_action": "refund",
+        "needs_review": false
+      },
+      "scenario_family": "wrong-power-adapter-refund",
+      "annotation_note": "Wrong variant/product; explicit monetary remedy.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"610\", \"issue_type\": \"wrong_item\", \"requested_action\": \"refund\", \"needs_review\": \"false\"}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"wrong_item\", \"requested_action\": \"refund\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"610\", \"issue_type\": \"wrong_item\", \"requested_action\": \"refund\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-dev-27",
+      "text": "My card was charged for order AB-0007 even though you confirmed its cancellation yesterday. Please reverse that charge.",
+      "expected": {
+        "order_id": "AB-0007",
+        "issue_type": "billing_problem",
+        "requested_action": "refund",
+        "needs_review": false
+      },
+      "scenario_family": "charged-after-cancellation",
+      "annotation_note": "A request to reverse a charge is refund; preserve alphanumeric ID punctuation.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"AB-0007\", \"issue_type\": \"billing_problem\", \"requested_action\": \"refund\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"billing_problem\", \"requested_action\": \"refund\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"AB-0007\", \"issue_type\": \"billing_problem\", \"requested_action\": \"refund\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-dev-28",
+      "text": "Tracking for order 932 says the parcel was sent to the wrong city. Please locate it and tell me its delivery status.",
+      "expected": {
+        "order_id": "932",
+        "issue_type": "delivery_problem",
+        "requested_action": "status_update",
+        "needs_review": false
+      },
+      "scenario_family": "misrouted-city-status",
+      "annotation_note": "Locate/status are one delivery-status goal, not incompatible independent actions.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"932\", \"issue_type\": \"delivery_problem\", \"requested_action\": \"status_update\", \"needs_review\": false, \"confidence\": 0.95}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"delivery_problem\", \"requested_action\": \"status_update\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"932\", \"issue_type\": \"delivery_problem\", \"requested_action\": \"status_update\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-dev-29",
+      "text": "The book in order BK-84 arrived soaked and unusable. Please return the payment; I do not need another copy.",
+      "expected": {
+        "order_id": "BK-84",
+        "issue_type": "damaged_item",
+        "requested_action": "refund",
+        "needs_review": false
+      },
+      "scenario_family": "soaked-not-replace",
+      "annotation_note": "Damaged item and explicit payment return; negates replacement.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"BK-84\", \"issue_type\": \"damaged_item\", \"requested_action\": \"refund\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"damaged_item\", \"requested_action\": \"refund\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"BK-84\", \"issue_type\": \"damaged_item\", \"requested_action\": \"refund\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-dev-30",
+      "text": "Please change the delivery address for order A-600. The support page uses order 1234 as an example, but that is not my order.",
+      "expected": {
+        "order_id": "A-600",
+        "issue_type": "other",
+        "requested_action": "other",
+        "needs_review": false
+      },
+      "scenario_family": "receipt-example-not-target",
+      "annotation_note": "Address change is outside enum; explicitly unrelated example ID is ignored.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"A-600\", \"issue_type\": \"other\", \"requested_action\": \"other\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"other\", \"requested_action\": \"other\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"A-600\", \"issue_type\": \"other\", \"requested_action\": \"other\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-reg-01",
+      "text": "The leather on the left shoe from order S-501 is torn. Could you replace the pair?",
+      "expected": {
+        "order_id": "S-501",
+        "issue_type": "damaged_item",
+        "requested_action": "replacement",
+        "needs_review": false
+      },
+      "scenario_family": "torn-shoe-exchange",
+      "annotation_note": "Physical damage; pair replacement is one requested remedy.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"S-501\", \"issue_type\": \"damaged_item\", \"requested_action\": \"replacement\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"damaged_item\", \"requested_action\": \"replacement\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"S-501\", \"issue_type\": \"damaged_item\", \"requested_action\": \"replacement\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-reg-02",
+      "text": "The courier lost the crate for order C-61. I would like an update on the search.",
+      "expected": {
+        "order_id": "C-61",
+        "issue_type": "delivery_problem",
+        "requested_action": "status_update",
+        "needs_review": false
+      },
+      "scenario_family": "missing-crate-trace",
+      "annotation_note": "Progress of the parcel search is a status update.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"C-61\", \"issue_type\": \"delivery_problem\", \"requested_action\": \"status_update\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"delivery_problem\", \"requested_action\": \"status_update\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"C-61\", \"issue_type\": \"delivery_problem\", \"requested_action\": \"status_update\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-reg-03",
+      "text": "Order CF-930 was for whole beans, but you sent ground coffee. Please send the correct product in exchange.",
+      "expected": {
+        "order_id": "CF-930",
+        "issue_type": "wrong_item",
+        "requested_action": "replacement",
+        "needs_review": false
+      },
+      "scenario_family": "incorrect-coffee-grind",
+      "annotation_note": "Wrong product form; exchange for correct product is replacement.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"CF-930\", \"issue_type\": \"wrong_item\", \"requested_action\": \"replacement\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"wrong_item\", \"requested_action\": \"replacement\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"CF-930\", \"issue_type\": \"wrong_item\", \"requested_action\": \"replacement\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-reg-04",
+      "text": "Order 591 includes a delivery fee that was not in the confirmed total. Please refund that fee.",
+      "expected": {
+        "order_id": "591",
+        "issue_type": "billing_problem",
+        "requested_action": "refund",
+        "needs_review": false
+      },
+      "scenario_family": "unauthorised-delivery-fee",
+      "annotation_note": "Disputed charge is billing, regardless of the fee name.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"591\", \"issue_type\": \"other\", \"requested_action\": \"refund\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"billing_problem\", \"requested_action\": \"refund\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"591\", \"issue_type\": \"billing_problem\", \"requested_action\": \"refund\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-reg-05",
+      "text": "For order I-38, please email me a copy of the invoice. There is no problem with the amount charged.",
+      "expected": {
+        "order_id": "I-38",
+        "issue_type": "other",
+        "requested_action": "other",
+        "needs_review": false
+      },
+      "scenario_family": "invoice-document-copy",
+      "annotation_note": "Document-copy request; explicitly not a billing problem.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"I-38\", \"issue_type\": \"other\", \"requested_action\": \"other\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"other\", \"requested_action\": \"other\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"I-38\", \"issue_type\": \"other\", \"requested_action\": \"other\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-reg-06",
+      "text": "Change the gift-card wording on order GC-25 from \"Congratulations\" to \"Happy holidays\", please.",
+      "expected": {
+        "order_id": "GC-25",
+        "issue_type": "other",
+        "requested_action": "other",
+        "needs_review": false
+      },
+      "scenario_family": "holiday-message-correction",
+      "annotation_note": "Clear message-editing request outside the enums.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"GC-25\", \"issue_type\": \"other\", \"requested_action\": \"other\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"other\", \"requested_action\": \"other\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"GC-25\", \"issue_type\": \"other\", \"requested_action\": \"other\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-reg-07",
+      "text": "Order 872 arrived after the concert it was needed for. I want a refund, not another delivery.",
+      "expected": {
+        "order_id": "872",
+        "issue_type": "delivery_problem",
+        "requested_action": "refund",
+        "needs_review": false
+      },
+      "scenario_family": "deadline-refund-only",
+      "annotation_note": "Late delivery with explicit refund and rejected replacement.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"872\", \"issue_type\": \"delivery_problem\", \"requested_action\": \"refund\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"delivery_problem\", \"requested_action\": \"refund\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"872\", \"issue_type\": \"delivery_problem\", \"requested_action\": \"refund\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-reg-08",
+      "text": "My old order 510 was fine. The current order 511 contains decaf instead of regular tea; replace the tea in order 511.",
+      "expected": {
+        "order_id": "511",
+        "issue_type": "wrong_item",
+        "requested_action": "replacement",
+        "needs_review": false
+      },
+      "scenario_family": "different-subscription-target",
+      "annotation_note": "Historical unrelated order does not create multiple current targets.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"511\", \"issue_type\": \"wrong_item\", \"requested_action\": \"replacement\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"wrong_item\", \"requested_action\": \"replacement\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"511\", \"issue_type\": \"wrong_item\", \"requested_action\": \"replacement\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-reg-09",
+      "text": "The package I am waiting for is stuck at the depot. Please cancel my order; I do not have its number with me.",
+      "expected": {
+        "order_id": null,
+        "issue_type": "delivery_problem",
+        "requested_action": "cancel_order",
+        "needs_review": true
+      },
+      "scenario_family": "unidentified-cancelled-shipment",
+      "annotation_note": "Target ID is absent but required; preserve explicit cancellation.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": null, \"issue_type\": \"delivery_problem\", \"requested_action\": \"cancel_order\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": \"UNSUPPORTED-ID\", \"issue_type\": \"delivery_problem\", \"requested_action\": \"cancel_order\", \"needs_review\": true}",
+        "candidate_2": "{\"order_id\": null, \"issue_type\": \"delivery_problem\", \"requested_action\": \"cancel_order\", \"needs_review\": true}"
+      }
+    },
+    {
+      "id": "custom-reg-10",
+      "text": "For the duplicate charge on order 918, refund me and do not refund me. I cannot decide which I want.",
+      "expected": {
+        "order_id": "918",
+        "issue_type": "billing_problem",
+        "requested_action": null,
+        "needs_review": true
+      },
+      "scenario_family": "conflicting-billing-remedy",
+      "annotation_note": "Explicit unresolved action contradiction; retain the billing facts.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"918\", \"issue_type\": \"billing_problem\", \"requested_action\": null, \"needs_review\": true}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"billing_problem\", \"requested_action\": null, \"needs_review\": true}",
+        "candidate_2": "{\"order_id\": \"918\", \"issue_type\": \"billing_problem\", \"requested_action\": null, \"needs_review\": true}"
+      }
+    },
+    {
+      "id": "custom-reg-11",
+      "text": "Does your desk require a drill for assembly? I am only researching products and have not ordered one.",
+      "expected": {
+        "order_id": null,
+        "issue_type": "other",
+        "requested_action": "other",
+        "needs_review": false
+      },
+      "scenario_family": "installation-question",
+      "annotation_note": "General setup question requires no fabricated order ID.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": null, \"issue_type\": \"other\", \"requested_action\": \"other\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": \"UNSUPPORTED-ID\", \"issue_type\": \"other\", \"requested_action\": \"other\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": null, \"issue_type\": \"other\", \"requested_action\": \"other\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-reg-12",
+      "text": "For order CAM-23, the serial-number label is unreadable. I cannot establish whether this is the wrong camera or a damaged camera. Please replace it.",
+      "expected": {
+        "order_id": "CAM-23",
+        "issue_type": null,
+        "requested_action": "replacement",
+        "needs_review": true
+      },
+      "scenario_family": "photo-vs-serial-uncertainty",
+      "annotation_note": "Unresolved wrong-item versus damage issue affects only issue classification.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"CAM-23\", \"issue_type\": null, \"requested_action\": \"replacement\", \"needs_review\": true}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": null, \"requested_action\": \"replacement\", \"needs_review\": true}",
+        "candidate_2": "{\"order_id\": \"CAM-23\", \"issue_type\": null, \"requested_action\": \"replacement\", \"needs_review\": true}"
+      }
+    },
+    {
+      "id": "custom-reg-13",
+      "text": "Order 340 was billed twice. I am not requesting money back at this point; please explain why there are two charges.",
+      "expected": {
+        "order_id": "340",
+        "issue_type": "billing_problem",
+        "requested_action": "other",
+        "needs_review": false
+      },
+      "scenario_family": "refund-explanation-request",
+      "annotation_note": "A billing explanation is other, not a refund or progress request.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"340\", \"issue_type\": \"billing_problem\", \"requested_action\": \"status_update\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"billing_problem\", \"requested_action\": \"other\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"340\", \"issue_type\": \"billing_problem\", \"requested_action\": \"other\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-reg-14",
+      "text": "The carrier delivered order OBS-8 a day late. I am logging this for my records and am asking for no response or remedy.",
+      "expected": {
+        "order_id": "OBS-8",
+        "issue_type": "delivery_problem",
+        "requested_action": null,
+        "needs_review": false
+      },
+      "scenario_family": "shipping-observation-only",
+      "annotation_note": "Explicit record-only statement resolves absent intent without clarification.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"OBS-8\", \"issue_type\": \"delivery_problem\", \"requested_action\": null, \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"delivery_problem\", \"requested_action\": null, \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"OBS-8\", \"issue_type\": \"delivery_problem\", \"requested_action\": null, \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-reg-15",
+      "text": "Order SPL-77 was split into two parcels; the second parcel is missing. Please update me on that parcel.",
+      "expected": {
+        "order_id": "SPL-77",
+        "issue_type": "delivery_problem",
+        "requested_action": "status_update",
+        "needs_review": false
+      },
+      "scenario_family": "two-parcels-one-lost",
+      "annotation_note": "Two parcels belong to one explicit order; no target contradiction.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"SPL-77\", \"issue_type\": \"delivery_problem\", \"requested_action\": \"status_update\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"delivery_problem\", \"requested_action\": \"status_update\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"SPL-77\", \"issue_type\": \"delivery_problem\", \"requested_action\": \"status_update\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-final-01",
+      "text": "There has been no dispatch scan for order Q-290 for twelve days. I no longer need it; cancel the order.",
+      "expected": {
+        "order_id": "Q-290",
+        "issue_type": "delivery_problem",
+        "requested_action": "cancel_order",
+        "needs_review": false
+      },
+      "scenario_family": "cancel-outdated-dispatch",
+      "annotation_note": "Unshipped order, explicit cancellation.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"Q-290\", \"issue_type\": \"delivery_problem\", \"requested_action\": \"cancel_order\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"delivery_problem\", \"requested_action\": \"cancel_order\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"Q-290\", \"issue_type\": \"delivery_problem\", \"requested_action\": \"cancel_order\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-final-02",
+      "text": "The tax calculation on order TX-41 is wrong. Please send a corrected invoice; I am not asking for a refund.",
+      "expected": {
+        "order_id": "TX-41",
+        "issue_type": "billing_problem",
+        "requested_action": "other",
+        "needs_review": false
+      },
+      "scenario_family": "tax-correction-request",
+      "annotation_note": "Corrected billing document is other; negation rules out refund.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"TX-41\", \"issue_type\": \"billing_problem\", \"requested_action\": \"refund\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"billing_problem\", \"requested_action\": \"other\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"TX-41\", \"issue_type\": \"billing_problem\", \"requested_action\": \"other\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-final-03",
+      "text": "Order FR-905 arrived with its wooden picture frame snapped in two. Please replace the frame.",
+      "expected": {
+        "order_id": "FR-905",
+        "issue_type": "damaged_item",
+        "requested_action": "replacement",
+        "needs_review": false
+      },
+      "scenario_family": "smashed-frame-parts",
+      "annotation_note": "Broken physical product and explicit replacement.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"FR-905\", \"issue_type\": \"damaged_item\", \"requested_action\": \"replacement\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"damaged_item\", \"requested_action\": \"replacement\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"FR-905\", \"issue_type\": \"damaged_item\", \"requested_action\": \"replacement\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-final-04",
+      "text": "The seller wrote \"we can cancel order SE-18\" after sending the wrong lamp. I do not want cancellation. Send the lamp I ordered instead.",
+      "expected": {
+        "order_id": "SE-18",
+        "issue_type": "wrong_item",
+        "requested_action": "replacement",
+        "needs_review": false
+      },
+      "scenario_family": "quoted-seller-cancellation",
+      "annotation_note": "Quoted seller suggestion is not the current customer request.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"SE-18\", \"issue_type\": \"wrong_item\", \"requested_action\": \"cancel_order\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"wrong_item\", \"requested_action\": \"replacement\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"SE-18\", \"issue_type\": \"wrong_item\", \"requested_action\": \"replacement\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-final-05",
+      "text": "Before ordering, can you tell me whether the buttons on this kettle have tactile markings?",
+      "expected": {
+        "order_id": null,
+        "issue_type": "other",
+        "requested_action": "other",
+        "needs_review": false
+      },
+      "scenario_family": "accessibility-product-question",
+      "annotation_note": "A clear general accessibility enquiry needs no target order.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": null, \"issue_type\": \"other\", \"requested_action\": \"other\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": \"UNSUPPORTED-ID\", \"issue_type\": \"other\", \"requested_action\": \"other\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": null, \"issue_type\": \"other\", \"requested_action\": \"other\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-final-06",
+      "text": "The cosmetic jar in order CO-772 arrived broken, with cream leaking through the crack. Please give me a refund.",
+      "expected": {
+        "order_id": "CO-772",
+        "issue_type": "damaged_item",
+        "requested_action": "refund",
+        "needs_review": false
+      },
+      "scenario_family": "broken-seal-refund",
+      "annotation_note": "Explicit physical damage avoids inferring defect from a broken seal alone.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"CO-772\", \"issue_type\": \"damaged_item\", \"requested_action\": \"refund\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"damaged_item\", \"requested_action\": \"refund\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"CO-772\", \"issue_type\": \"damaged_item\", \"requested_action\": \"refund\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-final-07",
+      "text": "Order 00409 contains the wrong bicycle tyre. Workshop job number 77501 is unrelated. Please replace the tyre from order 00409.",
+      "expected": {
+        "order_id": "00409",
+        "issue_type": "wrong_item",
+        "requested_action": "replacement",
+        "needs_review": false
+      },
+      "scenario_family": "repair-job-number-decoy",
+      "annotation_note": "Preserve leading-zero order ID and ignore unrelated job number.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"77501\", \"issue_type\": \"wrong_item\", \"requested_action\": \"replacement\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"wrong_item\", \"requested_action\": \"replacement\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"00409\", \"issue_type\": \"wrong_item\", \"requested_action\": \"replacement\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-final-08",
+      "text": "The shoes in order RET-16 are the wrong size compared with what I ordered. I want to return them, but have not decided between money back and a replacement.",
+      "expected": {
+        "order_id": "RET-16",
+        "issue_type": "wrong_item",
+        "requested_action": null,
+        "needs_review": true
+      },
+      "scenario_family": "uncertain-remedy-return",
+      "annotation_note": "Return alone is not refund; remedy is explicitly unresolved.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"RET-16\", \"issue_type\": \"wrong_item\", \"requested_action\": \"refund\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"wrong_item\", \"requested_action\": null, \"needs_review\": true}",
+        "candidate_2": "{\"order_id\": \"RET-16\", \"issue_type\": \"wrong_item\", \"requested_action\": null, \"needs_review\": true}"
+      }
+    },
+    {
+      "id": "custom-final-09",
+      "text": "The investigation for missing order INV-90 has been open for a week. What is its current status?",
+      "expected": {
+        "order_id": "INV-90",
+        "issue_type": "delivery_problem",
+        "requested_action": "status_update",
+        "needs_review": false
+      },
+      "scenario_family": "late-investigation-wait",
+      "annotation_note": "Order-related investigation progress is a status update.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"INV-90\", \"issue_type\": \"delivery_problem\", \"requested_action\": \"status_update\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"delivery_problem\", \"requested_action\": \"status_update\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"INV-90\", \"issue_type\": \"delivery_problem\", \"requested_action\": \"status_update\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-final-10",
+      "text": "My statement says the duplicate charge belongs to order 450, but my receipt says order 451. I cannot resolve the mismatch. Please refund the duplicate charge.",
+      "expected": {
+        "order_id": null,
+        "issue_type": "billing_problem",
+        "requested_action": "refund",
+        "needs_review": true
+      },
+      "scenario_family": "contradictory-target-label",
+      "annotation_note": "Target contradiction affects order_id; issue/action remain clear.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"450\", \"issue_type\": \"billing_problem\", \"requested_action\": \"refund\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": \"UNSUPPORTED-ID\", \"issue_type\": \"billing_problem\", \"requested_action\": \"refund\", \"needs_review\": true}",
+        "candidate_2": "{\"order_id\": null, \"issue_type\": \"billing_problem\", \"requested_action\": \"refund\", \"needs_review\": true}"
+      }
+    },
+    {
+      "id": "custom-final-11",
+      "text": "For order COM-30, the headset arrived crushed. Please both refund the full purchase and send a new headset; I am requesting both remedies.",
+      "expected": {
+        "order_id": "COM-30",
+        "issue_type": "damaged_item",
+        "requested_action": null,
+        "needs_review": true
+      },
+      "scenario_family": "independent-refund-and-replace",
+      "annotation_note": "Two independent requested remedies cannot fit one action field; second script intentionally still chooses one.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"COM-30\", \"issue_type\": \"damaged_item\", \"requested_action\": \"refund\", \"needs_review\": true}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"damaged_item\", \"requested_action\": null, \"needs_review\": true}",
+        "candidate_2": "{\"order_id\": \"COM-30\", \"issue_type\": \"damaged_item\", \"requested_action\": \"refund\", \"needs_review\": true}"
+      }
+    },
+    {
+      "id": "custom-final-12",
+      "text": "I previously asked for a replacement for the smashed bowl in order BW-508. That request is withdrawn. My current request is a full refund.",
+      "expected": {
+        "order_id": "BW-508",
+        "issue_type": "damaged_item",
+        "requested_action": "refund",
+        "needs_review": false
+      },
+      "scenario_family": "current-refund-reversal",
+      "annotation_note": "Explicit withdrawal and current instruction resolve the earlier replacement.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"BW-508\", \"issue_type\": \"damaged_item\", \"requested_action\": \"replacement\", \"needs_review\": false",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"damaged_item\", \"requested_action\": \"refund\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"BW-508\", \"issue_type\": \"damaged_item\", \"requested_action\": \"refund\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-final-13",
+      "text": "I am considering buying a sofa. How would I contact support if I later needed to cancel an order?",
+      "expected": {
+        "order_id": null,
+        "issue_type": "other",
+        "requested_action": "other",
+        "needs_review": false
+      },
+      "scenario_family": "cancel-general-question",
+      "annotation_note": "Hypothetical process enquiry, not a current cancellation target or request.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": null, \"issue_type\": \"other\", \"requested_action\": \"other\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": \"UNSUPPORTED-ID\", \"issue_type\": \"other\", \"requested_action\": \"other\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": null, \"issue_type\": \"other\", \"requested_action\": \"other\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-final-14",
+      "text": "The amount debited for order PAY-66 exceeds the amount on the receipt. Arrange a call with your billing team, please.",
+      "expected": {
+        "order_id": "PAY-66",
+        "issue_type": "billing_problem",
+        "requested_action": "other",
+        "needs_review": false
+      },
+      "scenario_family": "charge-dispute-contact",
+      "annotation_note": "Clear contact request outside the action enum.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"PAY-66\", \"issue_type\": \"billing_problem\", \"requested_action\": \"other\", \"needs_review\": null}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"billing_problem\", \"requested_action\": \"other\", \"needs_review\": false}",
+        "candidate_2": "{\"order_id\": \"PAY-66\", \"issue_type\": \"billing_problem\", \"requested_action\": \"other\", \"needs_review\": false}"
+      }
+    },
+    {
+      "id": "custom-final-15",
+      "text": "Order LOG-52 arrived with a bent metal tray. I have not decided what I want to happen next.",
+      "expected": {
+        "order_id": "LOG-52",
+        "issue_type": "damaged_item",
+        "requested_action": null,
+        "needs_review": true
+      },
+      "scenario_family": "no-request-transit-damage",
+      "annotation_note": "Damage is clear; desired action explicitly needs clarification.",
+      "fixture_outputs": {
+        "baseline": "{\"order_id\": \"LOG-52\", \"issue_type\": \"damaged_item\", \"requested_action\": \"refund\", \"needs_review\": false}",
+        "candidate_1": "{\"order_id\": null, \"issue_type\": \"damaged_item\", \"requested_action\": null, \"needs_review\": true}",
+        "candidate_2": "{\"order_id\": \"LOG-52\", \"issue_type\": \"damaged_item\", \"requested_action\": null, \"needs_review\": true}"
+      }
+    }
+  ]
+}

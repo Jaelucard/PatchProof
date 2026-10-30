@@ -1,0 +1,15 @@
+{
+  "name": "My support-ticket examples",
+  "cases": [
+    {
+      "id": "ticket-001",
+      "text": "Please refund order 004812. It arrived late.",
+      "expected": {
+        "order_id": "004812",
+        "issue_type": "delivery_problem",
+        "requested_action": "refund",
+        "needs_review": false
+      }
+    }
+  ]
+}

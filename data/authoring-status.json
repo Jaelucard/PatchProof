@@ -1,0 +1,16 @@
+{
+  "execution_kind": "Fixture simulation",
+  "label_status": "draft",
+  "human_review_pending": true,
+  "authoring_agent_checked": true,
+  "independent_review_recorded": false,
+  "cases": 60,
+  "partitions": {
+    "development": 30,
+    "regression": 15,
+    "final": 15
+  },
+  "distinct_scenario_families": 60,
+  "unresolved_authoring_disputes": [],
+  "source_sha256": "9eeb48163f9135a8eb5f81adede0fb002c33de4b81dbc15cc3916ee8589bbbcb"
+}

@@ -1,0 +1,73 @@
+{
+	admin off
+	persist_config off
+	auto_https off
+}
+
+http://:8780 {
+	handle_errors {
+		header {
+			Cache-Control "no-store"
+			X-Content-Type-Options "nosniff"
+			Referrer-Policy "no-referrer"
+			X-Frame-Options "DENY"
+			Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'"
+		}
+		@authentication expression {err.status_code} == 401
+		header @authentication ?WWW-Authenticate "Basic realm=\"PatchProof\""
+		respond "{err.status_text}" {err.status_code}
+	}
+	route {
+		header {
+			?Cache-Control "no-store"
+			?X-Content-Type-Options "nosniff"
+			?Referrer-Policy "no-referrer"
+			?X-Frame-Options "DENY"
+			?Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'"
+		}
+		@badHost expression {hostport} != "__EXPECTED_HOST__"
+		respond @badHost "Invalid preview host." 400
+		@badOrigin {
+			header Origin *
+			expression {http.request.header.Origin} != "__PUBLIC_ORIGIN__"
+		}
+		respond @badOrigin "Cross-origin preview access is blocked." 403
+		@crossSite expression <<CEL
+		({http.request.header.Sec-Fetch-Site} == "cross-site"
+			|| {http.request.header.Sec-Fetch-Site}.contains(","))
+		&& !(
+			{http.request.header.Sec-Fetch-Site} == "cross-site"
+			&& ({method} == "GET" || {method} == "HEAD")
+			&& {path} == "/"
+			&& {http.request.header.Sec-Fetch-Mode} == "navigate"
+			&& {http.request.header.Sec-Fetch-Dest} == "document"
+		)
+		CEL
+		respond @crossSite "Cross-site preview access is blocked." 403
+		@badAuthorization expression {http.request.header.Authorization}.contains(",")
+		respond @badAuthorization "Ambiguous preview authorization." 400
+		basic_auth bcrypt "PatchProof" {
+			import /run/secrets/judge-users
+		}
+		handle / {
+			root * /srv/preview
+			file_server
+		}
+		handle_path /saved-evidence/* {
+			root * /srv/preview/saved-evidence
+			file_server
+		}
+		handle {
+			@workspace path /workspace /workspace/
+			rewrite @workspace /
+			reverse_proxy 127.0.0.1:8770 {
+				header_up Host 127.0.0.1:8770
+				header_up Origin http://127.0.0.1:8770
+				header_up -Authorization
+				header_up -Forwarded
+				header_up -X-Forwarded-*
+				header_down Location "^http://127[.]0[.]0[.]1:8770(.*)$" "__PUBLIC_ORIGIN__$1"
+			}
+		}
+	}
+}

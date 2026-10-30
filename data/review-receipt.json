@@ -1,0 +1,20 @@
+{
+  "resolved": true,
+  "review_kind": "independent_agent_review",
+  "human_review_pending": true,
+  "demo_sha256": "9eeb48163f9135a8eb5f81adede0fb002c33de4b81dbc15cc3916ee8589bbbcb",
+  "cases_reviewed": 60,
+  "expected_fields_reviewed": 240,
+  "reviewed_at": "2026-10-20T19:11:14.711369+00:00",
+  "findings": [],
+  "conventions_for_human_review": [
+    "Explicit record-only requests have null action and do not require clarification.",
+    "Clear general enquiries use other and do not require an order ID.",
+    "Multiple independent remedies require null action and review."
+  ],
+  "limits": [
+    "Synthetic labels, not human-reviewed.",
+    "Fixture simulation, not model inference.",
+    "Exact and supplied-family checks do not prove semantic deduplication or statistical independence."
+  ]
+}

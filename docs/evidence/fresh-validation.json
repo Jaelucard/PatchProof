@@ -1,0 +1,212 @@
+{
+  "verified_at": "2026-10-22T03:39:38.799008+00:00",
+  "kind": "Actual local HTTP runs using scripted fixtures; no provider inference",
+  "checks": "passed",
+  "runs": {
+    "improvement": {
+      "id": "a6a28316-6a87-4141-bca1-fc74ff00c693",
+      "status": "completed",
+      "observations": 150,
+      "server_seconds": 3.79373,
+      "verdict": "inconclusive",
+      "summary": {
+        "fixed": 23,
+        "regressed": 0,
+        "still_failing": 2,
+        "unchanged": 35,
+        "improvements": 44,
+        "regressions": 0,
+        "baseline_passing_cases": 35,
+        "candidate_passing_cases": 58,
+        "baseline_passing_checks": 314,
+        "candidate_passing_checks": 358,
+        "observed_cases": 60,
+        "total_checks": 360
+      },
+      "assessments": {
+        "development": {
+          "status": "passed",
+          "total_cases": 30,
+          "fixed": 12,
+          "regressed": 0,
+          "still_failing": 1,
+          "unchanged": 17,
+          "improvements": 24,
+          "regressions": 0,
+          "baseline_passing_cases": 17,
+          "candidate_passing_cases": 29,
+          "baseline_passing_checks": 155,
+          "candidate_passing_checks": 179,
+          "observed_cases": 30,
+          "total_checks": 180,
+          "passing_cases": 29,
+          "complete": true,
+          "qualified": true
+        },
+        "regression": {
+          "status": "passed",
+          "total_cases": 15,
+          "fixed": 3,
+          "regressed": 0,
+          "still_failing": 0,
+          "unchanged": 12,
+          "improvements": 3,
+          "regressions": 0,
+          "baseline_passing_cases": 12,
+          "candidate_passing_cases": 15,
+          "baseline_passing_checks": 87,
+          "candidate_passing_checks": 90,
+          "observed_cases": 15,
+          "total_checks": 90,
+          "reason": "No previously passing checks were lost."
+        },
+        "final": {
+          "status": "passed",
+          "total_cases": 15,
+          "fixed": 8,
+          "regressed": 0,
+          "still_failing": 1,
+          "unchanged": 6,
+          "improvements": 17,
+          "regressions": 0,
+          "baseline_passing_cases": 6,
+          "candidate_passing_cases": 14,
+          "baseline_passing_checks": 72,
+          "candidate_passing_checks": 89,
+          "observed_cases": 15,
+          "total_checks": 90,
+          "reason": "No previously passing checks were lost."
+        }
+      },
+      "usage": {
+        "live_calls": 0,
+        "tokens": "not applicable",
+        "cost": "not applicable"
+      },
+      "prior_exposure": false
+    },
+    "regression": {
+      "id": "99bac995-bb0f-4ef8-b040-3a2a4ab9db4c",
+      "status": "completed",
+      "observations": 120,
+      "server_seconds": 2.740324,
+      "verdict": "rejected",
+      "summary": {
+        "fixed": 15,
+        "regressed": 1,
+        "still_failing": 1,
+        "unchanged": 28,
+        "improvements": 27,
+        "regressions": 1,
+        "baseline_passing_cases": 29,
+        "candidate_passing_cases": 43,
+        "baseline_passing_checks": 242,
+        "candidate_passing_checks": 268,
+        "observed_cases": 45,
+        "total_checks": 270
+      },
+      "assessments": {
+        "development": {
+          "status": "passed",
+          "total_cases": 30,
+          "fixed": 12,
+          "regressed": 0,
+          "still_failing": 1,
+          "unchanged": 17,
+          "improvements": 24,
+          "regressions": 0,
+          "baseline_passing_cases": 17,
+          "candidate_passing_cases": 29,
+          "baseline_passing_checks": 155,
+          "candidate_passing_checks": 179,
+          "observed_cases": 30,
+          "total_checks": 180,
+          "passing_cases": 29,
+          "complete": true,
+          "qualified": true
+        },
+        "regression": {
+          "status": "failed",
+          "total_cases": 15,
+          "fixed": 3,
+          "regressed": 1,
+          "still_failing": 0,
+          "unchanged": 11,
+          "improvements": 3,
+          "regressions": 1,
+          "baseline_passing_cases": 12,
+          "candidate_passing_cases": 14,
+          "baseline_passing_checks": 87,
+          "candidate_passing_checks": 89,
+          "observed_cases": 15,
+          "total_checks": 90,
+          "reason": "Previously passing checks were lost."
+        },
+        "final": {
+          "status": "not_run",
+          "reason": "Not run: regression check failed.",
+          "fixed": 0,
+          "regressed": 0,
+          "still_failing": 0,
+          "unchanged": 0,
+          "improvements": 0,
+          "regressions": 0,
+          "baseline_passing_cases": 0,
+          "candidate_passing_cases": 0,
+          "baseline_passing_checks": 0,
+          "candidate_passing_checks": 0,
+          "observed_cases": 0,
+          "total_checks": 0
+        }
+      },
+      "usage": {
+        "live_calls": 0,
+        "tokens": "not applicable",
+        "cost": "not applicable"
+      },
+      "prior_exposure": true
+    },
+    "provider_failure": {
+      "id": "de2cda29-678a-4074-950d-b10befe05f39",
+      "status": "error",
+      "observations": 7,
+      "server_seconds": 0.1481,
+      "verdict": "inconclusive",
+      "summary": {
+        "fixed": 0,
+        "regressed": 0,
+        "still_failing": 0,
+        "unchanged": 0,
+        "improvements": 0,
+        "regressions": 0,
+        "baseline_passing_cases": 0,
+        "candidate_passing_cases": 0,
+        "baseline_passing_checks": 0,
+        "candidate_passing_checks": 0,
+        "observed_cases": 0,
+        "total_checks": 0
+      },
+      "assessments": {
+        "development": {
+          "status": "incomplete",
+          "total_cases": 30,
+          "reason": "TimeoutError: Scripted provider timeout after seven saved observations (Fixture simulation)."
+        },
+        "regression": {
+          "status": "not_run",
+          "reason": "Not run: experiment did not reach this assessment."
+        },
+        "final": {
+          "status": "not_run",
+          "reason": "Not run: experiment did not reach this assessment."
+        }
+      },
+      "usage": {
+        "live_calls": 0,
+        "tokens": "not applicable",
+        "cost": "not applicable"
+      },
+      "prior_exposure": true
+    }
+  }
+}

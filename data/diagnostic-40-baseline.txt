@@ -1,0 +1,6 @@
+Extract the order ID, issue type and requested action from this English support ticket.
+Return only JSON with order_id, issue_type, requested_action and needs_review.
+Use delivery_problem, damaged_item, wrong_item, billing_problem or other for issue_type.
+Use status_update, cancel_order, refund, replacement or other for requested_action.
+Keep order IDs as strings. Use null when a value is unavailable and set needs_review when clarification is needed.
+Extract the customer's request; do not make company policy or approval decisions.
