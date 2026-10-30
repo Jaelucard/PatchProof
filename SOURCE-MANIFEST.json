@@ -247,8 +247,8 @@
     },
     {
       "path": "deployment/preview/index.html",
-      "bytes": 2261,
-      "sha256": "aa1725f2643db42e873c7d5163ef1745e353b7c67a1e8900fd9c46b7f0422b8c"
+      "bytes": 2350,
+      "sha256": "dae65c1d77ee514a627c2b73afbd0e07303cada3655fc35817ecb33d18f20cca"
     },
     {
       "path": "deployment/preview/integration_test.py",
