@@ -15,6 +15,7 @@ __pycache__/
 *.pem
 password.txt
 judge-users
+patchproof-state.b64
 compose.json
 prepared.json
 .DS_Store

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PatchProof — judge demonstration</title>
+  <style>
+    :root{font-family:system-ui,sans-serif;color:#202a24;background:#f5f4ee}
+    body{margin:0;padding:clamp(24px,7vw,80px)}main{max-width:780px;margin:auto}
+    .label{letter-spacing:.13em;text-transform:uppercase;font-size:.75rem;color:#52694e}
+    h1{font-size:clamp(2.5rem,7vw,4.5rem);letter-spacing:-.055em;line-height:1.04;margin:.4em 0}
+    p{font-size:1.1rem;line-height:1.65}.notice{padding:22px;border:1px solid #b7c3b0;background:#eaf0e4;border-radius:12px}
+    a{color:#264724}.button{display:inline-block;background:#264724;color:white;padding:14px 22px;border-radius:8px;text-decoration:none;font-weight:650;margin:14px 0}
+    ul{padding-left:22px;line-height:1.8}footer{margin-top:38px;color:#626a60;font-size:.9rem}
+  </style>
+</head>
+<body><main>
+  <div class="label">Private judge access · shared workspace</div>
+  <h1>Inspect what a prompt change preserves.</h1>
+  <p>PatchProof makes proposed support-ticket prompt repairs reviewable: what improved, what regressed and what still needs attention.</p>
+  <div class="notice">
+    <strong>This is a shared demonstration workspace.</strong>
+    <p>Use synthetic tickets only. Everyone with judge access can see saved runs. No prompt is automatically adopted.</p>
+    <p>__LIVE_STATUS__</p>
+  </div>
+  <a class="button" href="/workspace">Open the workspace</a>
+  <p>In Experiment history, select the completed <strong>Live inference</strong> run with the <strong>rejected</strong> verdict. Its stable run ID is <code>ba2420e6-2691-47a2-b993-18c35e1c1955</code>, which you can confirm in the saved JSON evidence. History times use your browser's local timezone. The proposal lost a previously correct requested-action field; final assessment was not run.</p>
+  <ul>
+    <li><a href="/saved-evidence/live-diagnostic.md">Read the saved real-run report</a></li>
+    <li><a href="/saved-evidence/live-diagnostic.json">Download the saved JSON evidence</a></li>
+  </ul>
+  <footer>Saved evidence remains available when the shared inference cap is reached. Fixture mode uses scripted answers and does not measure model quality.</footer>
+</main></body>
+</html>

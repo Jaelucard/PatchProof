@@ -1,0 +1,23 @@
+# Review this file and create only one paid service with one 1 GB disk.
+# No automatic activation or inference. All activation values are set explicitly.
+services:
+  - type: web
+    name: patchproof-judge
+    runtime: docker
+    plan: 0.5c-512mb
+    numInstances: 1
+    dockerfilePath: ./deployment/hosted/Dockerfile
+    dockerContext: .
+    autoDeployTrigger: off
+    envVars:
+      - key: PORT
+        value: "8780"
+      - key: PATCHPROOF_BOOTSTRAP
+        value: "0"
+      - key: PATCHPROOF_LIVE_ENABLED
+        value: "0"
+    disk:
+      name: patchproof-state
+      mountPath: /data
+      sizeGB: 1
+# No HTTP healthCheckPath: keep Render's TCP probe behind the unchanged login gate.

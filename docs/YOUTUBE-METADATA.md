@@ -1,6 +1,6 @@
 # PatchProof: YouTube publication copy
 
-Prepared 30 October 2026 for the 52.109-second video. Narration text, captions and six representative frames passed a content review. Audio listening and public playback still need checking.
+Updated 30 October 2026 for the 52.109-second video. Upload is authorized; the required YouTube terms confirmation is pending and no video has been uploaded. Narration text, captions and six representative frames passed a content review. Audio listening and public playback still need checking.
 
 ## Title
 
@@ -20,16 +20,18 @@ Built with Python, FastAPI, SQLite, React, TypeScript, Nebius Token Factory and 
 
 Prepared for the Nebius x NVIDIA Global AI Hackathon, Best Apps and Agents track.
 
-## Links to add after publication
+Source code: https://github.com/Jaelucard/PatchProof
 
-- Public source repository.
+## Remaining links
+
 - Working judge demo or test build.
 - Devpost project, when available.
 
-Use verified public links. Keep provider keys, private account links and judge credentials out of the public description.
+The source repository is public and was verified without signing in. Add the remaining links only after publication and verification. Keep provider keys, private account links and judge credentials out of the public description.
 
 ## Upload checks
 
+- Complete the pending YouTube terms confirmation. Upload and public visibility are already authorized.
 - Upload [PatchProof-live-evidence-draft.mp4](../demo/PatchProof-live-evidence-draft.mp4) with [captions.srt](../demo/captions.srt).
 - Check spoken names, caption timing and visual legibility. Keep the rejected result, formatting-only proposals and skipped final assessment clear.
 - Make the video public, then verify signed-out playback and captions.

@@ -53,11 +53,11 @@ See the [judge quickstart](JUDGE-QUICKSTART.md) for a walkthrough and setup deta
 
 Live inference requires an explicitly configured server-side Nebius key, confirmed access and a cumulative usage cap. Requests have bounded outputs, no automatic retries and durable usage receipts. See [live setup](docs/LIVE-SETUP.md).
 
-The current review preview is password protected and fixture-only. Public judge hosting is being prepared. The [deployment review](deployment/preview/LIVE-CUTOVER.md) describes the requirements for TLS, persistent evidence, the original usage ledger and server-side credentials. The judge workspace is shared; use synthetic tickets only.
+The current local review preview is password protected and fixture-only. The [Render deployment package](deployment/hosted/README.md) is prepared and locally tested, with public hosting awaiting account setup and billing confirmation. It preserves the complete experiment history and original usage ledger, and refuses normal startup if either database is missing. The judge workspace is shared; use synthetic tickets only.
 
 ## Verify the build
 
-The 30 October checks passed **374 backend tests**, **60 frontend tests** and **127 real Docker/HTTP integration checks**, plus lint, type checks, shell syntax and the production build. The automated provider tests use mocks; actual Nebius results are documented separately.
+The 30 October checks passed **430 backend tests**, **60 frontend tests**, **127 local-preview Docker/HTTP checks** and **42 hosted-container Docker/HTTP/lifecycle checks**, plus lint, type checks, shell syntax and the production build. The targeted development-dependency update also passed `npm audit` with zero reported vulnerabilities. The automated provider tests use mocks; actual Nebius results are documented separately. Render's actual disk mounts, public proxy and funded activation still need deployment verification. See the [hosting preparation receipt](docs/evidence/hosting-preparation-2026-10-30.json).
 
 ```sh
 .venv/bin/python -B -m pytest -q

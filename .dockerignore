@@ -14,6 +14,15 @@
 !deployment/preview/Dockerfile
 !deployment/preview/Caddy.Dockerfile
 !deployment/preview/gateway-entrypoint.sh
+!deployment/preview/Caddyfile.template
+!deployment/hosted/
+!deployment/hosted/Dockerfile
+!deployment/hosted/runtime.py
+!deployment/hosted/index.html
+!docs/
+!docs/evidence/
+!docs/evidence/live-diagnostic-2026-10-29.json
+!docs/evidence/live-diagnostic-2026-10-29.md
 **/__pycache__/
 **/*.pyc
 **/.env*
@@ -21,3 +30,9 @@
 **/*.db
 **/*.key
 **/*.pem
+
+# Render places runtime secret files in the Docker build context as well.
+**/nebius-tokenfactory.key
+**/judge-users
+**/patchproof-state.b64
+**/password.txt

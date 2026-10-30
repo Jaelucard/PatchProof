@@ -7,13 +7,13 @@
   "files": [
     {
       "path": ".dockerignore",
-      "bytes": 347,
-      "sha256": "49921005268ca4d0c20b4aa22995e9421aee78256832bbf56f0f5a2b8aa815b3"
+      "bytes": 768,
+      "sha256": "f98b3ae2f33d094c40186668d5c6b367f7236e27551c34d60d87bb1f1e2bf8af"
     },
     {
       "path": ".gitignore",
-      "bytes": 194,
-      "sha256": "4bb05bbda49df9ec37ef4514ac859fef6ffad360ef7ec2f3ed508b46b7635e69"
+      "bytes": 215,
+      "sha256": "54bae51dd28569ed05faf0589db7fef6eea3ce0146aa83a76494ddbe7998b33e"
     },
     {
       "path": "JUDGE-QUICKSTART.md",
@@ -27,8 +27,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 5432,
-      "sha256": "4385ef90ec0a9a7d10326b63e052ad10ff7a5d1da169d67fb67d63c12f14f086"
+      "bytes": 5862,
+      "sha256": "df3289cf4563ebcfb7724ff999470afab315006db40c8d242d92ffcada611ef1"
     },
     {
       "path": "REUSE.md",
@@ -181,6 +181,41 @@
       "sha256": "c959e94ba7a522da1a185eb541bede51e24271626675e039a1251ece06891edc"
     },
     {
+      "path": "deployment/hosted/Dockerfile",
+      "bytes": 1318,
+      "sha256": "7e6a99b33a026b70af63c991148d7dc6aed236935b7aaa1a03c0e5b007b30316"
+    },
+    {
+      "path": "deployment/hosted/README.md",
+      "bytes": 7356,
+      "sha256": "ce46cb28420df56c4787f7441c4dc1aef30995d0f075c68829abb3517679a1f8"
+    },
+    {
+      "path": "deployment/hosted/create_seed.py",
+      "bytes": 4261,
+      "sha256": "31e207fdb15c98c0292118e018861bb040221643596bd3d93df8cc6859ce1cdf"
+    },
+    {
+      "path": "deployment/hosted/index.html",
+      "bytes": 2315,
+      "sha256": "f987855b6e92603445d86a22fc72a5643bc4c06f1ee3f8c87105b233083939dd"
+    },
+    {
+      "path": "deployment/hosted/integration_test.py",
+      "bytes": 20407,
+      "sha256": "761f8cdf5fa9bc53f8e6872711d0ed5bac89f79a91d1c45e8903ae2441d6a30a"
+    },
+    {
+      "path": "deployment/hosted/render.yaml",
+      "bytes": 689,
+      "sha256": "75f3028b03d6928f5cec5cfdef7d2d112a641f3c121ce9f5ba59ea4b025d8906"
+    },
+    {
+      "path": "deployment/hosted/runtime.py",
+      "bytes": 23840,
+      "sha256": "6955c44ed8afece0765b66ce0bc8488cf38e107b85589970847e9c143ee29764"
+    },
+    {
       "path": "deployment/preview/Caddy.Dockerfile",
       "bytes": 552,
       "sha256": "9b760c62295c49b8c81514c2594ea5298793a6a93154659be1f9409411000ad2"
@@ -257,8 +292,8 @@
     },
     {
       "path": "docs/SUBMISSION-READINESS.md",
-      "bytes": 9768,
-      "sha256": "2450ea14a90284327b6986345375101f55b2d467addce84b6e75bdee20aa47f5"
+      "bytes": 5020,
+      "sha256": "3b6396c92c039642bc889bd243a43a47ebdc416780d1629a36045d34326a2219"
     },
     {
       "path": "docs/TECHNICAL.md",
@@ -267,13 +302,18 @@
     },
     {
       "path": "docs/YOUTUBE-METADATA.md",
-      "bytes": 2132,
-      "sha256": "e1cac53359946af9fdbdc9c7e3df486aeded30fb9f3cb024f98c4d17aed0a9ce"
+      "bytes": 2458,
+      "sha256": "d88933ae5fc21749a270fcefb2746820ab8cbfe89e00ebd31ac5e2f6d2d8bafb"
     },
     {
       "path": "docs/evidence/fresh-validation.json",
       "bytes": 6252,
       "sha256": "a7549fccc0e49b8033ca6ffe34921cf3f85c0e7d16f06869133a635deff360a9"
+    },
+    {
+      "path": "docs/evidence/hosting-preparation-2026-10-30.json",
+      "bytes": 1295,
+      "sha256": "a055a5b583052013ba652d128fdd0586af6ed4c4de4e1bfb6b3b2b52bcf65909"
     },
     {
       "path": "docs/evidence/instruction-provenance-2026-10-29.json",
@@ -456,6 +496,11 @@
       "sha256": "6d85720ee3b025d8d3c1bd70046d53dcf4e0a654e1cb3453b7cc7684a6fc5f33"
     },
     {
+      "path": "tests/test_hosted_runtime.py",
+      "bytes": 20386,
+      "sha256": "42ec94b956d20bc715f41e949e983ae66549bf51860c6c18cc45e6cd9312980c"
+    },
+    {
       "path": "tests/test_import_transport.py",
       "bytes": 7786,
       "sha256": "e7b8cea982ece0cb8938652f437eaaeb02515c5d4420a22917955dc05ae4ad86"
@@ -515,5 +560,7 @@
       "bytes": 13217,
       "sha256": "cdf2daadb19c5a903b470bd895d2b169c81936caae167706f421c4d623675992"
     }
-  ]
+  ],
+  "hosted_runtime_included": true,
+  "actual_public_host_verified": false
 }

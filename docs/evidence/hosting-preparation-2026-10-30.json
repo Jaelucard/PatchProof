@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-30",
+  "scope": "Local preparation of authenticated Render deployment; no public deployment yet",
+  "backend_tests_passed": 430,
+  "frontend_tests_passed": 60,
+  "hosted_focused_tests_included_in_backend_total": 56,
+  "local_preview_http_checks_passed": 127,
+  "hosted_container_checks_passed": 42,
+  "checks": [
+    "Ruff",
+    "gateway shell syntax",
+    "frontend type checking",
+    "frontend lint",
+    "production build",
+    "git diff whitespace check"
+  ],
+  "npm_audit_vulnerabilities": 0,
+  "compiled_frontend_unchanged": true,
+  "image_architecture": "arm64",
+  "hosted_image_id": "sha256:e38dbc949c1b7818ca235a86706f255c7f54be2925f4e57ccdced2402afeb481",
+  "runtime_sha256": "6955c44ed8afece0765b66ce0bc8488cf38e107b85589970847e9c143ee29764",
+  "provider_calls_added": 0,
+  "live_activation_test": "Synthetic raw key, network disabled, GET status only; no inference",
+  "review_fixes": [
+    "Normal persistent-state validation supports history beyond the bounded seed-transfer size without whole-file buffering",
+    "Landing instructions identify the historical run by its stable ID and explain local timestamps"
+  ],
+  "disposable_resources_cleaned": true,
+  "actual_render_mounts_and_proxy_verified": false,
+  "real_hosted_inference_smoke_verified": false
+}
