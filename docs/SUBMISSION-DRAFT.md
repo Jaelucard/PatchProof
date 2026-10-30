@@ -2,6 +2,8 @@
 
 Prepared 30 October 2026. Publication links and entrant details are tracked in [submission readiness](SUBMISSION-READINESS.md).
 
+Published source: [Jaelucard/PatchProof](https://github.com/Jaelucard/PatchProof). Demo video: [PatchProof: Catching a Prompt Regression with Nebius and NVIDIA](https://youtu.be/97ETxB-mhGs).
+
 ## Project name
 
 PatchProof

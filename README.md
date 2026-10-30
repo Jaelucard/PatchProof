@@ -31,7 +31,7 @@ For a prepurchase question about a travel kettle in Japan, the baseline correctl
 
 Both proposed prompts were identical formatting-only changes. A later instruction follow-up returned the original baseline with proper line breaks and stopped before new predictions. These runs do not demonstrate improved extraction quality. The 40-ticket dataset is synthetic and has two individual human approvals plus 38 delegated agent approvals; independent human review remains incomplete.
 
-Read the [results and limits](docs/LIVE-RESULTS.md), inspect the [saved JSON](docs/evidence/live-diagnostic-2026-10-29.json), or watch the [52-second browser demonstration](demo/PatchProof-live-evidence-draft.mp4). The video reviews the saved result, with synthesized English narration and captions.
+Read the [results and limits](docs/LIVE-RESULTS.md), inspect the [saved JSON](docs/evidence/live-diagnostic-2026-10-29.json), or watch [PatchProof: Catching a Prompt Regression with Nebius and NVIDIA](https://youtu.be/97ETxB-mhGs). The public 52.109-second video reviews the saved result with synthesized English narration and a published English caption track. See the [recording notes](demo/README.md) for the local copy and verification limits.
 
 ## Run locally
 

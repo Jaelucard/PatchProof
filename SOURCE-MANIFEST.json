@@ -17,8 +17,8 @@
     },
     {
       "path": "JUDGE-QUICKSTART.md",
-      "bytes": 6287,
-      "sha256": "19d954e89edc69b03e6a2f573f4167293adb60e14b590dabff0f6f3ff6b1b73d"
+      "bytes": 6752,
+      "sha256": "9962ec40d390998177a9d25a84a9e942832f327cf4317fee20055c98b2490499"
     },
     {
       "path": "LICENSE",
@@ -27,8 +27,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 5862,
-      "sha256": "df3289cf4563ebcfb7724ff999470afab315006db40c8d242d92ffcada611ef1"
+      "bytes": 6010,
+      "sha256": "85a85d2b814c76c13ebee5ccba3eb4b7aa25ec8415dd00c47ffe952d0535875e"
     },
     {
       "path": "REUSE.md",
@@ -162,8 +162,8 @@
     },
     {
       "path": "demo/README.md",
-      "bytes": 690,
-      "sha256": "22b7b5475e18444bb1105019b1b40988391439837aef682e46841e0bcd1f78af"
+      "bytes": 1380,
+      "sha256": "0244479c9fd51e707c6bb7b3818a62e6c18bb262ebcf892982cd4c6b8ec66d2d"
     },
     {
       "path": "demo/captions.srt",
@@ -287,13 +287,13 @@
     },
     {
       "path": "docs/SUBMISSION-DRAFT.md",
-      "bytes": 5989,
-      "sha256": "e53172fcc109656ce2c1f48aa75c537374a30e9753a7e3d284dbf9181c3d0d1a"
+      "bytes": 6182,
+      "sha256": "828fb0a7f7dd1d24485d066f4ca6062e0e8b97a3b4277c2169a4b35ee866c5cb"
     },
     {
       "path": "docs/SUBMISSION-READINESS.md",
-      "bytes": 5020,
-      "sha256": "3b6396c92c039642bc889bd243a43a47ebdc416780d1629a36045d34326a2219"
+      "bytes": 5501,
+      "sha256": "c7d68d7438caf4bd6f93f12fa10fe26ecd0415018e3ba357701cc77a65db76e2"
     },
     {
       "path": "docs/TECHNICAL.md",

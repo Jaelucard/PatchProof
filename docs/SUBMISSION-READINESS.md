@@ -2,7 +2,7 @@
 
 Updated 30 October 2026.
 
-The [public repository](https://github.com/Jaelucard/PatchProof) contains the runnable app, MIT license, saved NVIDIA-on-Nebius evidence, tests and a short browser demonstration. The hosted judge service, public YouTube video and final Devpost entry are still pending. This page records preparation and verification; it is not a submission receipt.
+The [public repository](https://github.com/Jaelucard/PatchProof) contains the runnable app, MIT license, saved NVIDIA-on-Nebius evidence, tests and a short browser demonstration. The [YouTube video](https://youtu.be/97ETxB-mhGs) is also public. The hosted judge service and final Devpost entry are still pending. This page records preparation and verification; it is not a submission receipt.
 
 ## What is ready
 
@@ -14,10 +14,12 @@ The [public repository](https://github.com/Jaelucard/PatchProof) contains the ru
 | Runnable local build | The compiled interface is included. [Judge instructions](../JUDGE-QUICKSTART.md) explain the fixture workflow and saved evidence. |
 | Hosted deployment package | A protected Render deployment is prepared. Its local checks cover authentication, persistent state, cumulative accounting and process shutdown. Actual Render deployment verification remains outstanding. |
 | English submission story | [Devpost copy](SUBMISSION-DRAFT.md), architecture, limitations and observed tool feedback are prepared. |
-| Short video | A 52.109-second browser recording reviews the saved real result, with synthesized English narration and English captions. Public YouTube publication remains outstanding. |
+| Short video | [PatchProof: Catching a Prompt Regression with Nebius and NVIDIA](https://youtu.be/97ETxB-mhGs) is public. The 52.109-second recording reviews the saved real result with synthesized English narration. The provided English caption track is published and was verified rendering in signed-in Chrome. |
 | Development dependencies | The targeted dependency refresh passed the frontend checks and `npm audit` with zero reported vulnerabilities. |
 
 See the [README](../README.md) for the current test counts and commands, [live results](LIVE-RESULTS.md) for the real-model evidence, and [hosted deployment instructions](../deployment/hosted/README.md) for deployment controls.
+
+The signed-out video check redirected to Google sign-in, so anonymous playback remains unverified. Audio listening is also unverified. The [recording notes](../demo/README.md) distinguish the spoken YouTube captions from the original video's visual-summary track.
 
 ## What the evidence does and does not show
 
@@ -29,8 +31,8 @@ The local preview and hosted-container checks make no new model requests. The ho
 
 ## Remaining submission steps
 
-1. Complete Render account setup and resolve hosting-budget controls. Deploy one service with persistent storage, then verify login, public HTTPS, exports, restart persistence and bounded live inference.
-2. Publish the prepared video on YouTube with English captions and verify public playback. Add the verified URL to the repository and submission.
+1. Complete Render setup and verify hosting-cost monitoring. Deploy one service with persistent storage, then verify login, public HTTPS, exports, restart persistence, backup access and bounded live inference.
+2. Include the published video URL in the entry. Retain the signed-in playback and caption verification, and keep the blocked anonymous check distinct from a successful playback check.
 3. Confirm the actual Devpost entrant/team details, eligibility, track and required declarations. Transfer the reviewed wording and verified links into the entry. Use private testing instructions for the judge login; keep provider credentials out of all public materials.
 4. Review and submit the completed entry, then retain the project URL, timestamp and submitted-status receipt.
 
