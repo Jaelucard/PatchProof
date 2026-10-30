@@ -342,13 +342,13 @@
     },
     {
       "path": "frontend/package-lock.json",
-      "bytes": 170353,
-      "sha256": "5aa84d51302ae6f7564c58a6159e6c269f1497e3956d95d8b3ae95c2fd49ddd2"
+      "bytes": 169667,
+      "sha256": "f43cf0be8315d328e3073e57e3351209ce6b118cb1f038904708c55ae008190c"
     },
     {
       "path": "frontend/package.json",
       "bytes": 1225,
-      "sha256": "275f73cf1d4ce2e67eb9d6195e1deeb4bf20f733d5475fb9067087bd78f9b2ad"
+      "sha256": "91fbfe44feb5eabc216fd9f7f353b7a0d61b07f039fbc5084a0b752bc23a39e2"
     },
     {
       "path": "frontend/src/App.tsx",
